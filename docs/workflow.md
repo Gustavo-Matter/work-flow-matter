@@ -1,78 +1,60 @@
 # Workflow com IA — Matter
 
-O jeito de trabalhar com o Claude Code nos projetos da Matter, para back (.NET) e front (Flutter). O diagnóstico que motivou cada regra está em [workflow-atual.md](workflow-atual.md).
-
-As regras abaixo são o **porquê**. O **como** está nas skills do plugin [`matter-workflow`](../plugins/matter-workflow/), que o Claude carrega só quando a tarefa pede. Assim a regra de .NET não ocupa contexto numa sessão de Flutter, e vice-versa.
+O jeito de trabalhar com o Claude Code nos projetos da Matter, para back (.NET) e front (Flutter). Aqui estão as regras; o **porquê** de cada uma está nos [ADRs](adr/) e o **como** nas skills do plugin [`matter-workflow`](../plugins/matter-workflow/), que o Claude carrega só quando a tarefa pede.
 
 ## O ciclo
 
 ```
-1. planejar   /matter-workflow:planejar-feature   tarefa central + sub-issues no Linear; o plano fica na descrição da central
-2. contrato   /matter-workflow:contrato-api       só quando back e front mudam juntos: contrato antes do código
-3. codar      /matter-workflow:feature-back       ou   /matter-workflow:feature-front
-4. pronto     /matter-workflow:pronto             checklist + agente revisor ANTES do commit
-5. PR         um PR por sub-issue, com a doc daquela sub-issue dentro
+0. repo       /matter-workflow:iniciar-repo        repo novo, ou alinhar um existente
+1. planejar   /matter-workflow:planejar-feature    tarefa central + sub-issues; plano na descrição da central
+2. contrato   /matter-workflow:contrato-api        só quando back e front mudam juntos
+3. codar      /matter-workflow:feature-back        ou   feature-front   (princípios comuns: padroes-codigo)
+   decidir    /matter-workflow:registrar-decisao   quando uma escolha pode virar ADR
+4. pronto     /matter-workflow:pronto              gate + checklist + agente revisor, ANTES do commit
+5. PR         um por sub-issue, com a doc daquela sub-issue dentro
 ```
+
+Escrita no Linear, em qualquer etapa: `/matter-workflow:linear-tarefa`.
 
 ## Regras
 
-### 1. Um PR por sub-issue, não por plano
+| # | Regra | Detalhe |
+|---|---|---|
+| 1 | **Um PR por sub-issue**, branch `tipo/mat-<n>-descricao`, até ~15 arquivos de código | [ADR-0002](adr/0002-pr-por-sub-issue.md) |
+| 2 | **Revisão antes do commit** (`pronto` + `revisor`); nada de `fix(review)` logo depois do `feat` | [ADR-0006](adr/0006-revisao-antes-do-commit.md) |
+| 3 | **Fonte única** para cada informação (tabela abaixo) e doc com no máximo ~25 KB | [ADR-0003](adr/0003-fonte-unica-de-doc.md) |
+| 4 | **Back e front conversam por contrato** no repo do back e por sub-issue no Linear; sem handoff em Markdown | [ADR-0004](adr/0004-contrato-back-front.md) |
+| 5 | **ADR só para decisão** com alternativa descartada; detalhe de tela vai para o doc da feature | [ADR-0007](adr/0007-criterio-de-adr.md) |
+| 6 | **CLAUDE.md do repo é índice** de até ~2 KB e muda no mesmo PR que muda o que ele afirma (stack, deploy, banco, fase do produto) | `pronto`, `iniciar-repo` |
+| 7 | **Regra de stack em skill**, não no CLAUDE.md global | [ADR-0005](adr/0005-regra-de-stack-em-skill.md) |
+| 8 | **Processo vive neste repo** e chega pelo plugin; nada de diretrizes copiadas em cada projeto | [ADR-0001](adr/0001-plugin-distribui-o-workflow.md) |
+| 9 | **Tela com Figma** só começa com o link e o node na sub-issue, lida pela skill do Figma | `feature-front` |
+| 10 | **Higiene:** worktree em `C:\Matter\.worktrees\`; branch padrão = branch ativa; branches mergeadas apagadas; segredo fora do git; `settings.local.json` com padrões; uma memória só; MCP ligado só quando o trabalho do dia precisa | `iniciar-repo`, `diagnosticar-workflow` |
 
-PR com 200 arquivos não é revisado por ninguém e não cabe no contexto da IA. Cada sub-issue vira uma branch `tipo/mat-<n>-descricao` e um PR pequeno que leva o código, os testes e a doc daquela sub-issue. A tarefa central junta os PRs.
-
-*Substitui* o "um PR por plano" da convenção anterior.
-
-### 2. A revisão acontece antes do commit
-
-Hoje quase todo `feat` tem um `fix(review)` logo atrás (muma-fit API, muma-fit app, bencao API, bencao mobile). Cada `fix` custa uma segunda rodada inteira: reler código, corrigir, reescrever doc. A skill `pronto` roda o checklist da stack e chama o agente `revisor` **antes** do primeiro commit da feature. O que ele achar entra no mesmo commit.
-
-### 3. Fonte única para cada informação
+### Onde vive cada informação
 
 | Informação | Vive em | Não copie em |
 |---|---|---|
-| Contrato de rota (método, payload, erros) | back: `docs/api/<modulo>.md` (ou OpenAPI) | ADR, handoff, doc de feature do app |
-| Por que uma escolha foi feita | ADR (back) ou `docs/decisions/` (front), curto | api, flow, README |
+| Contrato de rota (método, payload, erros) | back: `docs/api/<modulo>.md` | ADR, handoff, doc de feature do app |
+| Por que uma escolha foi feita | ADR (back) ou `docs/decisions/` (front) | api, flow, README |
 | O que mudou numa versão | `CHANGELOG.md` do back | handoff com payload copiado |
-| Como o app usa a rota | `docs/features/<feature>.md` do app, **com link** para o contrato do back | — |
+| Como o app usa a rota | `docs/features/<feature>.md`, **com link** para o contrato | — |
+| Detalhe de tela | `docs/features/<feature>.md` | ADR |
 | Pedido do app para o back | sub-issue no Linear | `docs/back/*.md` no app |
 | Plano | descrição da tarefa central no Linear | `docs/planejamento-*.md` |
-
-Doc com mais de ~25 KB é quebrada por módulo. A IA lê o arquivo inteiro ou erra; com 100 KB ela lê pedaços e escreve inconsistências.
-
-Um ADR é **decisão**: contexto, decisão, alternativas, consequências. Sem payload e sem passo a passo de tela.
-
-### 4. CLAUDE.md do repo é índice, não documentação
-
-Até ~2 KB: stack, comandos, gate (`make check`/`dotnet test`), onde está a doc e as armadilhas que a inferência erraria. A arquitetura vive em `docs/`. Modelos em [`templates/`](../templates/). Quando o projeto muda (deploy, banco, fase do produto), o CLAUDE.md muda **no mesmo PR**.
-
-### 5. Processo vive aqui, não em cada repo
-
-Diretrizes do Linear, padrão de tarefa, checklist de pronto e padrão de PR ficam neste repositório. O repo do projeto guarda só o que é dele: projeto e label do Linear, comandos, armadilhas. Nada de branch `docs/diretrizes-linear` por repositório.
-
-### 6. Back e front conversam por contrato, não por handoff
-
-Hoje o back escreve `docs/flutter/handoff-x.md` com código Dart, e o app escreve `docs/back/HANDOFF.md` com os pedidos. As duas pontas copiam o mesmo payload. Pelo novo fluxo:
-
-- o app pede mudança abrindo sub-issue no Linear (skill `contrato-api`);
-- o back responde atualizando o contrato do módulo e o CHANGELOG;
-- o app lê o contrato e escreve só o que é dele (estado, tela, cache).
-
-### 7. Ambiente enxuto
-
-- Worktree em `C:\Matter\.worktrees\<repo>-<branch>`, nunca no Temp.
-- `settings.local.json` com padrões (`Bash(dotnet test *)`), não comandos únicos com payload.
-- Uma memória só (arquivo **ou** claude-mem).
-- MCP ligado só quando o trabalho do dia precisa dele.
+| Processo (Linear, PR, pronto) | este repo | `docs/linear.md` em cada projeto |
 
 ## Stacks
 
 | | Back | Front |
 |---|---|---|
-| Padrão | .NET 8+/10, módulos por domínio, `controller → service → repository`, envelope `ApiResponse` | Flutter via FVM, features por domínio, Riverpod + go_router + fpdart + `matter_core`/`matter_design_system` (padrão do `matter-flutter-template`) |
+| Padrão | .NET 8+/10, módulos por domínio, `controller → service → repository`, envelope `ApiResponse` | Flutter via FVM, features por domínio, Riverpod + go_router + fpdart + `matter_core`/`matter_design_system` (`matter-flutter-template`) |
 | Gate | `dotnet build` sem aviso + `dotnet test` | `make check` (format + analyze + arquitetura + testes) |
 | Skill | `feature-back` | `feature-front` |
-| Repos | `muma-fit-api`, `bencaodiaria-app-api` | `muma-fit`, `bencaodiaria-app-mobile` (legado em Bloc/get_it: segue o padrão do próprio repo até migrar) |
+| Repos | `muma-fit-api`, `bencaodiaria-app-api` | `muma-fit`, `bencaodiaria-app-mobile` (legado em Bloc/get_it: segue o padrão do próprio repo) |
 
-## Instalação num projeto
+Python, Node e Go: skill `padroes-codigo`.
 
-Ver [README](../README.md#instalação).
+## Estado dos projetos
+
+Diagnósticos datados em [diagnosticos/](diagnosticos/) e o que cada repo já adotou em [adocao.md](adocao.md).

@@ -5,7 +5,7 @@ description: Use ao implementar ou alterar rota, regra de negócio ou persistên
 
 # feature-back (.NET)
 
-O CLAUDE.md do repo e a doc do módulo têm prioridade quando forem mais específicos que esta skill.
+O CLAUDE.md do repo e a doc do módulo têm prioridade quando forem mais específicos que esta skill. Os princípios comuns a todas as stacks (estrutura, fluxo, envelope, logs) estão na skill `padroes-codigo`; aqui está a aplicação deles em .NET.
 
 ## Antes de codar
 
@@ -38,7 +38,7 @@ O CLAUDE.md do repo e a doc do módulo têm prioridade quando forem mais especí
 ## Doc no mesmo PR
 
 - Rota nova ou alterada: contrato em `docs/api/<modulo>.md` (ou na seção do módulo). Só ali.
-- Decisão com alternativa descartada: ADR curto. Sem copiar payload.
+- Decisão: skill `registrar-decisao` (ADR curto, sem payload).
 - `CHANGELOG.md`: uma linha por mudança visível para o app.
 - Diagrama de fluxo só quando há assincronia ou mais de dois serviços envolvidos.
 - **Não** escreva handoff com código Dart: o app lê o contrato.

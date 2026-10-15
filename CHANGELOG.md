@@ -1,0 +1,13 @@
+# Changelog — plugin matter-workflow
+
+## 0.2.0 — 15/10/2026
+
+- Skills novas: `registrar-decisao` (critério e formato de ADR), `iniciar-repo` (criar ou alinhar repo), `padroes-codigo` (Python, Node, Go e princípios comuns, vindos do CLAUDE.md global).
+- `pronto`: confere tamanho de doc, critério de ADR e se o CLAUDE.md do repo precisa mudar.
+- `diagnosticar-workflow`: verifica branch padrão, branches mergeadas, worktrees, `.env` no histórico e decisões de tela; grava em `docs/diagnosticos/`.
+- `feature-front`: tela com Figma exige link com node e a skill `figma:figma-design-to-code`.
+- Docs: ADRs 0001–0007, diagnósticos por data, `adocao.md`, modelo `templates/CLAUDE.global.md`.
+
+## 0.1.0 — 15/10/2026
+
+- Plugin inicial: `planejar-feature`, `contrato-api`, `feature-back`, `feature-front`, `pronto`, `linear-tarefa`, `diagnosticar-workflow` e o agente `revisor`.

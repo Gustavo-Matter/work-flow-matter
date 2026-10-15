@@ -4,8 +4,10 @@ O workflow da Matter com o Claude Code, para back (.NET) e front (Flutter). As c
 
 | Quero… | Vá para |
 |---|---|
-| Entender o workflow e o porquê das regras | [docs/workflow.md](docs/workflow.md) |
-| Ver o diagnóstico que motivou as regras | [docs/workflow-atual.md](docs/workflow-atual.md) |
+| Entender as regras do workflow | [docs/workflow.md](docs/workflow.md) |
+| Saber o porquê de uma regra | [docs/adr/](docs/adr/) |
+| Ver como cada projeto está | [docs/diagnosticos/](docs/diagnosticos/) e [docs/adocao.md](docs/adocao.md) |
+| Ver o que mudou no plugin | [CHANGELOG.md](CHANGELOG.md) |
 | Ver/alterar as skills e o agente | [plugins/matter-workflow/](plugins/matter-workflow/) |
 | Começar o CLAUDE.md ou o template de PR de um repo | [templates/](templates/) |
 
@@ -17,7 +19,10 @@ O workflow da Matter com o Claude Code, para back (.NET) e front (Flutter). As c
 | `contrato-api` | Back e front mudam juntos, ou o app precisa de algo que a API não tem |
 | `feature-back` | Rota, regra ou persistência numa API .NET |
 | `feature-front` | Tela, estado ou integração num app Flutter |
+| `padroes-codigo` | Código em Python, Node ou Go; princípios comuns (estrutura, fluxo, envelope, logs) |
+| `registrar-decisao` | Uma escolha pode virar ADR: critério e formato |
 | `pronto` | Antes do commit e do PR: gate + checklist + revisor |
+| `iniciar-repo` | Repo novo, ou alinhar um existente ao workflow |
 | `linear-tarefa` | Qualquer escrita no Linear (traz as `DIRETRIZES.md` do time) |
 | `diagnosticar-workflow` | Auditar o workflow de IA de um repositório |
 | agente `revisor` | Chamado pelo `pronto`; revisa o diff antes do commit |
@@ -37,7 +42,7 @@ Ou direto do GitHub (exige acesso ao repo pela chave da Matter):
 /plugin marketplace add git@github-matterads:Gustavo-Matter/work-flow-matter.git
 ```
 
-Depois de instalar, apague as cópias antigas que o plugin substitui: `~/.claude/skills/linear-tarefa/` e `~/.claude/linear/`.
+Depois de instalar, apague as cópias antigas que o plugin substitui (`~/.claude/skills/linear-tarefa/` e `~/.claude/linear/`) e troque o `~/.claude/CLAUDE.md` pelo modelo [templates/CLAUDE.global.md](templates/CLAUDE.global.md).
 
 ## Como alterar
 

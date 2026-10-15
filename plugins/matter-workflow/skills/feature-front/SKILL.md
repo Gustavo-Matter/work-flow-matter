@@ -14,7 +14,7 @@ O CLAUDE.md do repo manda. Os dois apps têm arquiteturas diferentes:
 
 1. Leia o CLAUDE.md do repo e `docs/features/<feature>.md`. Só esses e as decisões que eles citam.
 2. Integração com API: leia o **contrato no repo do back** (`docs/api/<modulo>.md`). Se a rota não existe ou não serve, pare e use a skill `contrato-api`; não invente campo.
-3. Tela com Figma: pegue o frame exato (link com node) **antes** de codar. Fidelidade ao Figma conferida no primeiro commit evita a sequência de `fix: como no Figma`.
+3. Tela com Figma: o link com node tem que estar na sub-issue; sem ele, peça antes de codar. Leia o frame pela skill `figma:figma-design-to-code` (não pelo print) e compare a tela com o frame **antes** do primeiro commit. É o que evita a sequência de `fix: como no Figma`.
 
 ## Regras
 
@@ -39,5 +39,5 @@ O CLAUDE.md do repo manda. Os dois apps têm arquiteturas diferentes:
 ## Doc no mesmo PR
 
 - `docs/features/<feature>.md`: estado, telas, decisões locais e **link** para o contrato do back. Não copie payload.
-- Decisão com alternativa descartada: `docs/decisions/NNN-*.md`, curta, e a linha no índice.
+- Decisão: skill `registrar-decisao` (detalhe de tela fica no doc da feature, não vira decisão).
 - Doc de feature passou de ~25 KB: quebre por sub-fluxo.
