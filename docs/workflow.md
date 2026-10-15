@@ -14,7 +14,9 @@ O jeito de trabalhar com o Claude Code nos projetos da Matter, para back (.NET) 
 5. PR         um por sub-issue, com a doc daquela sub-issue dentro
 ```
 
-Escrita no Linear, em qualquer etapa: `/matter-workflow:linear-tarefa`.
+Escrita no Linear, em qualquer etapa: `/matter-workflow:linear-tarefa`, executada pelo agente `linear-haiku`.
+
+Da etapa 1 à 4, o **Opus orquestra** (skill `orquestrar`): escolhe o executor de cada tarefa, escreve o brief e revisa o resultado. Quem executa é o modelo mais barato que dá conta ([modelos.md](modelos.md)).
 
 ## Regras
 
@@ -31,6 +33,8 @@ Escrita no Linear, em qualquer etapa: `/matter-workflow:linear-tarefa`.
 | 9 | **Tela com Figma** só começa com o link e o node na sub-issue, lida pela skill do Figma | `feature-front` |
 | 10 | **Higiene:** worktree em `C:\Matter\.worktrees\`; branch padrão = branch ativa; branches mergeadas apagadas; segredo fora do git; `settings.local.json` com padrões; uma memória só; MCP ligado só quando o trabalho do dia precisa | `iniciar-repo`, `diagnosticar-workflow` |
 | 11 | **Ferramenta de terceiros** só entra com problema medido, hooks lidos e custo de contexto baixo; a lista aprovada está em [ferramentas.md](ferramentas.md) | [ADR-0008](adr/0008-criterio-para-ferramentas-de-terceiros.md) |
+| 12 | **Opus orquestra e revisa; executa o modelo mais barato que dá conta** (gratuito → Haiku → Sonnet → Opus), sempre com brief completo. Linear e docs: Haiku ou gratuito | [ADR-0010](adr/0010-opus-orquestra-modelos-gratuitos-executam.md), [modelos.md](modelos.md), skill `orquestrar` |
+| 13 | **Comentário no código: no máximo 1 a 2 linhas**, só com o porquê | `padroes-codigo`, `revisor` |
 
 ### Onde vive cada informação
 

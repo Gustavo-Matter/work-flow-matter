@@ -6,6 +6,7 @@
 | O porquê de uma regra | [adr/](adr/) |
 | Como está cada projeto hoje | [diagnosticos/](diagnosticos/) e [adocao.md](adocao.md) |
 | Quais plugins, skills e MCPs de terceiros usar | [ferramentas.md](ferramentas.md) |
+| Qual modelo executa cada tarefa, e os limites gratuitos | [modelos.md](modelos.md) |
 | O passo a passo de uma tarefa | as skills em [plugins/matter-workflow/skills/](../plugins/matter-workflow/skills/) |
 
 ## ADRs
@@ -21,6 +22,7 @@
 | [0007](adr/0007-criterio-de-adr.md) | ADR só para decisão com alternativa descartada |
 | [0008](adr/0008-criterio-para-ferramentas-de-terceiros.md) | Critério para plugins, skills e MCPs de terceiros |
 | [0009](adr/0009-ferramentas-de-stack-em-plugins-separados.md) | Ferramentas de stack são plugins separados do core |
+| [0010](adr/0010-opus-orquestra-modelos-gratuitos-executam.md) | Opus orquestra e revisa; modelos gratuitos e Haiku executam |
 
 ## Diagnósticos
 

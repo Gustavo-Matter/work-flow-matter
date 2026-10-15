@@ -1,5 +1,12 @@
 # Changelog — plugin matter-workflow
 
+## 0.5.0 — 15/10/2026
+
+- Orquestração (ADR-0010): skill `orquestrar` (executor, brief, OpenCode, revisão), `docs/modelos.md` com papéis, modelos gratuitos e limites da OpenRouter.
+- Agentes `linear-haiku` e `docs-haiku` (modelo Haiku).
+- `planejar-feature` define executor e brief por sub-issue.
+- Comentário no código: no máximo 1 a 2 linhas (`padroes-codigo`, `feature-back`, `feature-front`, `revisor`).
+
 ## 0.4.0 — 15/10/2026
 
 - `matter-workflow` 0.4.0: `iniciar-repo` passa a habilitar os plugins pelo `.claude/settings.json` do repo.

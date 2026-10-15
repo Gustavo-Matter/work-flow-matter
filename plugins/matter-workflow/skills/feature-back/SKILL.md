@@ -21,7 +21,7 @@ O CLAUDE.md do repo e a doc do módulo têm prioridade quando forem mais especí
   - Repository: query e persistência, sem regra.
 - **Envelope:** toda rota nova devolve `{ transactionId (nanoid), message, data?, error? }`. Erro com código estável quando o repo já tem códigos.
 - **Logs:** estruturado (Serilog compact JSON), com `requestId`. Nunca senha, token ou payload grande.
-- **Comentários:** sem `///` XML doc em código novo, a não ser que o repo exija para o Swagger (bencaodiaria-app-api hoje exige). `//` só com o porquê, até duas linhas.
+- **Comentários:** no máximo 1 a 2 linhas, só com o porquê; nunca narrando a linha seguinte. Não cabe em duas linhas: vira ADR ou doc. Sem `///` XML doc em código novo, a não ser que o repo exija para o Swagger (bencaodiaria-app-api hoje exige), e ainda assim em 1 a 2 linhas.
 - **Migrations:** uma por mudança de schema, com `Down` correto.
 
 ## Checklist da stack (o `pronto` cobra)

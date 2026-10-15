@@ -16,8 +16,9 @@ O plano decide o tamanho dos PRs. Plano ruim gera PR de 200 arquivos e retrabalh
    - cabe num PR revisável (meta: até ~15 arquivos de código, fora gerados e migrations);
    - tem critério de pronto verificável ("`GET /x` devolve 404 no envelope quando…"), não "implementar X".
 4. **Mudou back e front juntos?** A primeira sub-issue é o contrato (skill `contrato-api`). Código das duas pontas vem depois.
-5. **Escreva o plano na descrição da tarefa central** (skill `linear-tarefa`): objetivo, sub-issues em ordem, decisões tomadas, perguntas abertas. Não crie `docs/planejamento-*.md` no repo.
-6. **Decisão que vale ADR** (escolha com alternativa descartada que alguém vai querer rediscutir) entra como item da sub-issue onde ela é implementada, não como sub-issue própria.
+5. **Escolha o executor de cada sub-issue** pela tabela de `docs/modelos.md` (gratuito → Haiku → Sonnet → Opus) e escreva o brief dela no formato da skill `orquestrar`. Quem planeja é o Opus.
+6. **Escreva o plano na descrição da tarefa central:** objetivo, sub-issues em ordem com o executor, decisões tomadas, perguntas abertas. A escrita no Linear é delegada ao agente `linear-haiku`, com o plano pronto. Não crie `docs/planejamento-*.md` no repo.
+7. **Decisão que vale ADR** (escolha com alternativa descartada que alguém vai querer rediscutir) entra como item da sub-issue onde ela é implementada, não como sub-issue própria.
 
 ## Não faça
 

@@ -24,6 +24,7 @@ O CLAUDE.md do repo manda. Os dois apps têm arquiteturas diferentes:
 - Imagem/vídeo de rede pelo componente com cache do kit, nunca `Image.network`.
 - Estado por usuário é zerado na troca de conta.
 - Gerado (`.g.dart`, `.freezed.dart`) só por `build_runner`, nunca à mão.
+- Comentário e `///` no máximo 1 a 2 linhas, só com o porquê. Não cabe: vira decisão ou doc da feature.
 - Dependência nova só depois de conferir o que o `matter_core` já oferece, e com o usuário de acordo.
 
 ## Checklist da stack (o `pronto` cobra)

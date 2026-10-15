@@ -52,7 +52,11 @@ def http_response(status_code, message, data=None, error=None):
     return JSONResponse(status_code=status_code, content=body)
 ```
 
-## 5. Logging
+## 5. Comentários
+
+No máximo 1 a 2 linhas, só com o porquê; nunca narrando o código. Docstring e JSDoc também. O que não cabe em duas linhas vai para ADR ou `docs/`.
+
+## 6. Logging
 
 - JSON estruturado, nunca `print`/`console`. Python: loguru (`serialize=True`); Node: pino; Go: zerolog.
 - Campos mínimos: `timestamp, level, message, service, environment, requestId`. Extras: `userId, action, duration`.

@@ -8,6 +8,7 @@ O workflow da Matter com o Claude Code, para back (.NET) e front (Flutter). As c
 | Saber o porquê de uma regra | [docs/adr/](docs/adr/) |
 | Ver como cada projeto está | [docs/diagnosticos/](docs/diagnosticos/) e [docs/adocao.md](docs/adocao.md) |
 | Saber quais plugins, skills e MCPs de terceiros usar | [docs/ferramentas.md](docs/ferramentas.md) |
+| Saber qual modelo executa cada tarefa | [docs/modelos.md](docs/modelos.md) |
 | Ver o que mudou no plugin | [CHANGELOG.md](CHANGELOG.md) |
 | Ver/alterar as skills e o agente | [plugins/matter-workflow/](plugins/matter-workflow/) |
 | Começar o CLAUDE.md ou o template de PR de um repo | [templates/](templates/) |
@@ -34,6 +35,9 @@ Cada repo habilita o que usa no próprio `.claude/settings.json` ([modelo](templ
 | `registrar-decisao` | Uma escolha pode virar ADR: critério e formato |
 | `pronto` | Antes do commit e do PR: gate + checklist + revisor |
 | `iniciar-repo` | Repo novo, ou alinhar um existente ao workflow |
+| `orquestrar` | No Opus: escolher o executor, escrever o brief, disparar no OpenCode ou num subagente e revisar |
+| agente `linear-haiku` | Escreve e controla tarefas no Linear a partir de um plano aprovado |
+| agente `docs-haiku` | Escreve doc em `docs/` a partir de um diff ou brief |
 | `linear-tarefa` | Qualquer escrita no Linear (traz as `DIRETRIZES.md` do time) |
 | `diagnosticar-workflow` | Auditar o workflow de IA de um repositório |
 | agente `revisor` | Chamado pelo `pronto`; revisa o diff antes do commit |
