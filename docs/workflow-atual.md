@@ -1,6 +1,8 @@
 # Workflow atual com IA — diagnóstico
 
-Levantamento de 15/10/2026 sobre os dois projetos em que o Claude Code mais trabalhou: `muma-fit` (API .NET 10) e `bencaodiaria-app-api` (API .NET 8). Objetivo: entender como o trabalho com a IA acontece hoje e onde ele gasta tokens sem retorno.
+Levantamento de 15/10/2026 sobre os projetos em que o Claude Code mais trabalhou. Back: `muma-fit-api` (.NET 10, pasta local `muma-fit`) e `bencaodiaria-app-api` (.NET 8). Front: `muma-fit` (Flutter, pasta local `muma-fit-app`) e `bencaodiaria-app-mobile` (Flutter). Objetivo: entender como o trabalho com a IA acontece hoje e onde ele gasta tokens sem retorno. O workflow que corrige isso está em [workflow.md](workflow.md).
+
+As seções "Como o workflow funciona hoje" e "Onde estão o desperdício" tratam do back; o front tem a seção própria [Front (Flutter)](#front-flutter).
 
 ## Como o workflow funciona hoje
 
@@ -53,6 +55,28 @@ Uma feature média do muma-fit toca **7–8 arquivos de doc**: ADR, `api.md`, `f
 6. **Worktrees em pasta temporária.** As branches `docs/diretrizes-linear` e `docs/planejamento-features` estão em worktrees dentro de `AppData\Local\Temp\claude\…\scratchpad`. Uma limpeza do Temp some com o diretório e deixa worktree órfão.
 7. **Trabalho de processo duplicado por repo.** As "diretrizes do Linear" viraram uma branch `docs/diretrizes-linear` em **cada** repositório (o bencao ganhou um `docs/linear.md` de 175 linhas), embora já existam em `~/.claude/linear/DIRETRIZES.md` e na skill `linear-tarefa`.
 8. **Ruído fixo no contexto.** Muitos MCPs ligados sem relação com backend .NET (Figma, Canva…), duas memórias paralelas e `settings.local.json` com dezenas de permissões descartáveis.
+
+## Front (Flutter)
+
+| | muma-fit (app) | bencaodiaria-app-mobile |
+|---|---|---|
+| Arquitetura | Riverpod + codegen, go_router, `fpdart`, `matter_core`/`matter_design_system` | Cubit/Bloc + get_it, rotas nomeadas, `AppFailure`, mocktail |
+| Branch ativa | `main` (338 commits, 46 merges) | `main` (163 commits); `master` e `develop` paradas desde 2024 |
+| Gate | `make check` + `tool/check_architecture.dart` (11 regras: ARCH, DS, MEDIA…). **Sem CI**: só o gate local | CI no GitHub Actions (format, analyze, test, build apk e ios) |
+| `CLAUDE.md` | ~8 KB, bom como índice e com regras verificáveis | ~11,6 KB, em inglês, repete a arquitetura inteira |
+| Docs | ~1 MB: 60 decisões, `features/groups.md` 86 KB, `stories.md` 38 KB, `day.md` 35 KB, `docs/back/` com 14 pedidos ao back + `HANDOFF.md` | `docs/melhorias/` (auditoria de ~120 KB em 7 arquivos) + `docs/linear.md` |
+| Commits | 110 `feat`, **84 `fix`**, 52 `docs` | 39 `feat`, **64 `fix`**, 13 `chore` |
+
+### O que acontece
+
+- **Fidelidade ao Figma em várias rodadas.** Nos stories do muma-fit, um `feat` puxou oito `fix` seguidos: "fiel ao Figma", "cabeçalho como no Figma", "marca sem fundo branco", "legenda com uma linha", "galeria relê a permissão"… A tela é codada sem o frame exato e sem os estados de borda (permissão negada, toque duplo, retry), e cada ajuste vira uma rodada nova.
+- **Retrabalho de revisão também no front.** No bencao mobile, os itens da auditoria entram como `feat`/`fix` e voltam como `fix(review): …` (P6, P7, U8, U10, S4).
+- **Handoff duplicado entre back e front.** A API escreve `docs/flutter/handoff-0.1x.md` com código Dart; o app escreve `docs/back/*.md` e `HANDOFF.md` com os pedidos. O mesmo payload existe nos dois repos e precisa ser alinhado à mão a cada versão.
+- **CLAUDE.md desatualizado no muma-fit app.** Ele diz "hoje existe só o fluxo de entrada, nada de domínio foi escrito", mas o app já tem refeições, água, treino, grupos, stories, metas e saúde. Toda sessão começa com o contexto errado sobre a fase do produto.
+- **Doc de feature gigante.** `groups.md` com 86 KB não cabe numa leitura; a regra `DOC-01` obriga a existir, mas não limita o tamanho.
+- **Dois apps, dois padrões.** Riverpod × Bloc, `fpdart` × exceções, design system do kit × tokens locais. Sem uma skill por stack, a IA descobre o padrão a cada sessão.
+- **Mesma branch de processo em todo repo.** `docs/mat-1508-diretrizes-linear` existe nos dois apps também.
+- **`.env` versionado nas branches antigas** (`master`/`develop`) do bencao mobile. A `main` já não versiona, mas o histórico ainda tem o arquivo.
 
 ## Ajustes propostos (para decidir)
 

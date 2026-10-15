@@ -1,0 +1,14 @@
+{
+    "name": "matter",
+    "owner": {
+        "name": "MatterAds",
+        "email": "gustavo@matterads.com"
+    },
+    "plugins": [
+        {
+            "name": "matter-workflow",
+            "source": "./plugins/matter-workflow",
+            "description": "Workflow da Matter com o Claude Code para back (.NET) e front (Flutter)."
+        }
+    ]
+}
