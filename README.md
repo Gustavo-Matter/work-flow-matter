@@ -9,6 +9,7 @@ O workflow da Matter com o Claude Code, para back (.NET) e front (Flutter). As c
 | Ver como cada projeto está | [docs/diagnosticos/](docs/diagnosticos/) e [docs/adocao.md](docs/adocao.md) |
 | Saber quais plugins, skills e MCPs de terceiros usar | [docs/ferramentas.md](docs/ferramentas.md) |
 | Saber qual modelo executa cada tarefa | [docs/modelos.md](docs/modelos.md) |
+| Continuar o trabalho em outra máquina | [HANDOFF.md](HANDOFF.md) |
 | Ver o que mudou no plugin | [CHANGELOG.md](CHANGELOG.md) |
 | Ver/alterar as skills e o agente | [plugins/matter-workflow/](plugins/matter-workflow/) |
 | Começar o CLAUDE.md ou o template de PR de um repo | [templates/](templates/) |
