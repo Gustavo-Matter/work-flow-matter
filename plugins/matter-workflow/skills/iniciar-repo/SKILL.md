@@ -26,16 +26,20 @@ Rode a skill `diagnosticar-workflow` e só depois mude. Não reescreva doc que e
    | `CHANGELOG.md` na raiz | — |
 
    Não crie pasta vazia "para seguir o padrão".
-4. **Gate e CI:** o comando de gate (`dotnet build` + `dotnet test` ou `make check`) descrito no CLAUDE.md e rodando no GitHub Actions. App Flutter novo: copiar o CI do `matter-flutter-template`.
-5. **Linear:** projeto e label de repositório na seção Linear do CLAUDE.md. Label inexistente: pedir ao Murilo (agente não cria label).
-6. **Higiene** (relate e peça confirmação antes de executar o que é irreversível ou remoto):
+4. **Ferramentas** (lista em `docs/ferramentas.md` do work-flow-matter):
+   - app Flutter: `.mcp.json` a partir de `templates/front.mcp.json` (Dart MCP via `fvm`) e a linha "prefira o LSP a grep para achar definição e referência" no CLAUDE.md;
+   - API .NET: a mesma linha, com o LSP de C#;
+   - não instale nada fora da lista aprovada sem passar pelo critério do ADR-0008.
+5. **Gate e CI:** o comando de gate (`dotnet build` + `dotnet test` ou `make check`) descrito no CLAUDE.md e rodando no GitHub Actions. App Flutter novo: copiar o CI do `matter-flutter-template`.
+6. **Linear:** projeto e label de repositório na seção Linear do CLAUDE.md. Label inexistente: pedir ao Murilo (agente não cria label).
+7. **Higiene** (relate e peça confirmação antes de executar o que é irreversível ou remoto):
    - branch padrão do GitHub = branch ativa;
    - branches já mergeadas e branches de processo (`docs/diretrizes-linear`) apagadas;
    - `.env` e segredos fora do git, inclusive no histórico de branches antigas;
    - remoto pelo alias SSH `github-matterads`;
    - worktrees em `C:\Matter\.worktrees\`;
    - `.claude/settings.local.json` com padrões de comando, não comandos únicos.
-7. **Processo não entra no repo:** nada de `docs/linear.md` ou diretrizes copiadas; elas vêm do plugin.
+8. **Processo não entra no repo:** nada de `docs/linear.md` ou diretrizes copiadas; elas vêm do plugin.
 
 ## Saída
 

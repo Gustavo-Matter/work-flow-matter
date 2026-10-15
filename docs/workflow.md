@@ -30,6 +30,7 @@ Escrita no Linear, em qualquer etapa: `/matter-workflow:linear-tarefa`.
 | 8 | **Processo vive neste repo** e chega pelo plugin; nada de diretrizes copiadas em cada projeto | [ADR-0001](adr/0001-plugin-distribui-o-workflow.md) |
 | 9 | **Tela com Figma** só começa com o link e o node na sub-issue, lida pela skill do Figma | `feature-front` |
 | 10 | **Higiene:** worktree em `C:\Matter\.worktrees\`; branch padrão = branch ativa; branches mergeadas apagadas; segredo fora do git; `settings.local.json` com padrões; uma memória só; MCP ligado só quando o trabalho do dia precisa | `iniciar-repo`, `diagnosticar-workflow` |
+| 11 | **Ferramenta de terceiros** só entra com problema medido, hooks lidos e custo de contexto baixo; a lista aprovada está em [ferramentas.md](ferramentas.md) | [ADR-0008](adr/0008-criterio-para-ferramentas-de-terceiros.md) |
 
 ### Onde vive cada informação
 

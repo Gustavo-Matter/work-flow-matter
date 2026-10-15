@@ -5,6 +5,7 @@
 | As regras do workflow | [workflow.md](workflow.md) |
 | O porquê de uma regra | [adr/](adr/) |
 | Como está cada projeto hoje | [diagnosticos/](diagnosticos/) e [adocao.md](adocao.md) |
+| Quais plugins, skills e MCPs de terceiros usar | [ferramentas.md](ferramentas.md) |
 | O passo a passo de uma tarefa | as skills em [plugins/matter-workflow/skills/](../plugins/matter-workflow/skills/) |
 
 ## ADRs
@@ -18,6 +19,7 @@
 | [0005](adr/0005-regra-de-stack-em-skill.md) | Regra de stack mora em skill; o CLAUDE.md global fica enxuto |
 | [0006](adr/0006-revisao-antes-do-commit.md) | A revisão acontece antes do commit |
 | [0007](adr/0007-criterio-de-adr.md) | ADR só para decisão com alternativa descartada |
+| [0008](adr/0008-criterio-para-ferramentas-de-terceiros.md) | Critério para plugins, skills e MCPs de terceiros |
 
 ## Diagnósticos
 

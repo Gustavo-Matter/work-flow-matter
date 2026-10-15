@@ -1,5 +1,10 @@
 # Changelog — plugin matter-workflow
 
+## 0.3.0 — 15/10/2026
+
+- `docs/ferramentas.md` com as ferramentas de terceiros aprovadas e recusadas, ADR-0008 com o critério e regra 11 no workflow.
+- `templates/front.mcp.json` (Dart MCP via fvm); `iniciar-repo` passa a configurar MCP e LSP.
+
 ## 0.2.0 — 15/10/2026
 
 - Skills novas: `registrar-decisao` (critério e formato de ADR), `iniciar-repo` (criar ou alinhar repo), `padroes-codigo` (Python, Node, Go e princípios comuns, vindos do CLAUDE.md global).
