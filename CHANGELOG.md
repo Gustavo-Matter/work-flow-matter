@@ -1,5 +1,9 @@
 # Changelog — plugin matter-workflow
 
+## 0.5.3 — 15/10/2026
+
+- Prioridade do modelo gratuito explícita: outro executor só com motivo registrado na sub-issue (global, `orquestrar`, `planejar-feature`, `modelos.md`, ADR-0010). Doc passa a ser gratuito primeiro; Linear segue no Haiku porque o OpenCode não tem o Linear.
+
 ## 0.5.2 — 15/10/2026
 
 - `templates/CLAUDE.global.md`: papel de orquestrador × executor, tabela "ao receber um pedido" com a skill ou agente de entrada, agentes `linear-haiku`/`docs-haiku` nomeados, local da chave e regra do `gh` sem acesso à MatterAds.

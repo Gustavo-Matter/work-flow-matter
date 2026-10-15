@@ -2,6 +2,10 @@
 
 Quem faz o quê. Regra e porquê no [ADR-0010](adr/0010-opus-orquestra-modelos-gratuitos-executam.md); procedimento na skill `orquestrar`.
 
+## Prioridade
+
+**O modelo gratuito é sempre a primeira escolha.** Só sobe para o Haiku (e dele para o Sonnet) por um destes motivos, **registrado na sub-issue**: duas tentativas sem passar no gate ou na revisão; limite gratuito do dia esgotado; segredo, `.env` ou dado de usuário; ferramenta que o OpenCode não tem (Linear).
+
 ## Papéis
 
 | Trabalho | Executor | Revisão |
@@ -10,8 +14,8 @@ Quem faz o quê. Regra e porquê no [ADR-0010](adr/0010-opus-orquestra-modelos-g
 | Desenho de contrato, ADR com trade-off real, mudança de arquitetura | **Opus** | — |
 | Código com brief fechado (arquivos, padrão a seguir, critério de pronto) | **Gratuito** → Haiku → Sonnet | Opus: gate + `revisor` |
 | Teste para comportamento já definido | **Gratuito** → Haiku | Opus: gate + `revisor` |
-| Doc em `docs/` (feature, contrato a partir do código, CHANGELOG) | **Haiku** ou gratuito | Opus: lê o diff |
-| Escrever tarefa no Linear a partir do plano | **Haiku** (agente `linear-haiku`) ou gratuito | Opus confere o plano antes |
+| Doc em `docs/` (feature, contrato a partir do código, CHANGELOG) | **Gratuito** → Haiku | Opus: lê o diff |
+| Escrever tarefa no Linear a partir do plano | **Haiku** (agente `linear-haiku`): o OpenCode não tem o Linear | Opus confere o plano antes |
 | Controle de tarefas no Linear (status, PR, WIP) | **Haiku** (agente `linear-haiku`) | — |
 | Revisão de diff | **Opus** (agente `revisor`) | — |
 

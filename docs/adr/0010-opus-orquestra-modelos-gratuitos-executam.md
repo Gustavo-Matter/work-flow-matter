@@ -10,7 +10,8 @@ Todo o trabalho rodava no modelo mais caro, inclusive tarefas mecânicas: escrev
 
 - **Opus é o orquestrador.** Planeja, quebra em tarefas e sub-tarefas (no Linear e para os agentes), escreve o brief de cada uma, escolhe o modelo que executa e **revisa todo diff** antes do commit (gate + agente `revisor`).
 - **Executa o mais barato que dá conta**, nesta ordem: modelo gratuito (OpenCode + OpenRouter) → Haiku → Sonnet → Opus. Tabela em [modelos.md](../modelos.md).
-- **Linear e `docs/`:** Haiku ou gratuito. Controle de tarefas no Linear: Haiku.
+- **O gratuito é sempre a primeira escolha.** Subir de degrau exige motivo registrado na sub-issue: duas tentativas sem passar, limite do dia esgotado, dado sensível, ou ferramenta que o OpenCode não tem.
+- **`docs/`:** gratuito. **Linear:** Haiku (agente `linear-haiku`), porque o OpenCode não tem acesso ao Linear.
 - **Todo executor recebe brief completo** (skill `orquestrar`): objetivo, contexto e arquivos, decisões e ADRs a respeitar, critério de pronto, o que não fazer. Sem brief, não se delega.
 - **Escala depois de duas tentativas** que não passam no gate ou na revisão: sobe um degrau.
 - **A chave da OpenRouter fica no `.env` da raiz do work-flow-matter** (ignorado pelo git; o modelo é o `.env.example`), com a variável de ambiente `OPENROUTER_API_KEY` do usuário como alternativa. Nunca em arquivo versionado.

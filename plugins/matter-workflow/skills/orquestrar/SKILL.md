@@ -9,12 +9,12 @@ O Opus pensa e revisa; quem digita é o modelo mais barato que dá conta. Tabela
 
 ## 1. Escolha o executor
 
-Para cada tarefa do plano, na ordem: **gratuito → Haiku → Sonnet → Opus**.
+**Sempre comece pelo gratuito.** Só sobe para o Haiku (e dele para o Sonnet) por um destes motivos, **registrado na sub-issue**: duas tentativas sem passar no gate ou na revisão; limite gratuito do dia esgotado; segredo, `.env` ou dado de usuário; ferramenta que o OpenCode não tem (Linear).
 - Desenho, contrato novo, ADR com trade-off, mudança de arquitetura: Opus faz.
 - Código ou teste com brief fechado: gratuito.
-- Linear: agente `linear-haiku`. Doc: agente `docs-haiku` ou gratuito.
+- Linear: agente `linear-haiku` (exceção: o OpenCode não tem o Linear). Doc: gratuito.
 - Envolve segredo, `.env` ou dado de usuário: **nunca** gratuito.
-- Registre o executor na sub-issue do Linear (`Executor: <modelo>`).
+- Registre o executor na sub-issue do Linear (`Executor: <modelo>`) e, se não for o gratuito, o motivo (`Motivo: <qual>`).
 
 ## 2. Escreva o brief
 

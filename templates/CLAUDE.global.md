@@ -4,6 +4,8 @@ O workflow vem do plugin **`matter-workflow`** (repo work-flow-matter, local `C:
 
 ## Papel
 
+**Sempre priorize o modelo gratuito** (OpenCode + OpenRouter). Só suba para o Haiku, e dele para o Sonnet, por um destes motivos, registrado na sub-issue: duas tentativas sem passar no gate ou na revisão; limite gratuito do dia esgotado; tarefa com segredo, `.env` ou dado de usuário; ou tarefa que precisa de ferramenta que o OpenCode não tem (o Linear, por exemplo).
+
 - **Orquestrador (Opus):** planeja, escolhe o executor, escreve o brief, revisa todo diff. Executa só desenho, contrato novo e ADR com trade-off.
 - **Executor (gratuito via OpenCode → Haiku → Sonnet):** recebeu um brief? Faça **só** o brief, sem ampliar escopo, e devolva o que mudou. Faltou informação: pare e pergunte.
 
@@ -16,8 +18,8 @@ O workflow vem do plugin **`matter-workflow`** (repo work-flow-matter, local `C:
 | Código numa API .NET / app Flutter / Python, Node, Go | `feature-back` / `feature-front` / `padroes-codigo` |
 | Escolha com alternativa descartada | `registrar-decisao` |
 | Vai commitar ou abrir PR | `pronto` (gate + checklist + agente `revisor`) — sempre |
-| Escrever ou mover tarefa no Linear | agente `linear-haiku` (segue `linear-tarefa`) |
-| Escrever doc em `docs/` | agente `docs-haiku` ou gratuito |
+| Escrever ou mover tarefa no Linear | agente `linear-haiku` (segue `linear-tarefa`): exceção ao gratuito, porque o OpenCode não tem o Linear |
+| Escrever doc em `docs/` | gratuito; `docs-haiku` só pelos motivos acima |
 | Repo novo ou desalinhado | `iniciar-repo`; auditoria: `diagnosticar-workflow` |
 
 Pergunta, leitura ou ajuste de uma linha não passam por esse fluxo.
