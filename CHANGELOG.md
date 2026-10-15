@@ -1,5 +1,9 @@
 # Changelog — plugin matter-workflow
 
+## 0.5.1 — 15/10/2026
+
+- Chave da OpenRouter no `.env` da raiz (`.env.example` versionado, `.env` no `.gitignore`); a skill `orquestrar` lê dele, com a variável de ambiente do usuário como alternativa.
+
 ## 0.5.0 — 15/10/2026
 
 - Orquestração (ADR-0010): skill `orquestrar` (executor, brief, OpenCode, revisão), `docs/modelos.md` com papéis, modelos gratuitos e limites da OpenRouter.

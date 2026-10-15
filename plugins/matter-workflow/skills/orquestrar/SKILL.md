@@ -52,7 +52,9 @@ Brief longo é sinal de tarefa grande: quebre antes.
 **Gratuito (OpenCode):** grave o brief num arquivo e rode no worktree da tarefa:
 
 ```powershell
-$env:OPENROUTER_API_KEY = [Environment]::GetEnvironmentVariable('OPENROUTER_API_KEY','User')
+# Chave: C:\Matter\ambiente-ia\.env (fora do git); se não houver, a variável de ambiente do usuário
+$envFile = 'C:\Matter\ambiente-ia\.env'
+$env:OPENROUTER_API_KEY = if (Test-Path $envFile) { ((Get-Content $envFile | Where-Object { $_ -match '^OPENROUTER_API_KEY=' }) -split '=', 2)[1] } else { [Environment]::GetEnvironmentVariable('OPENROUTER_API_KEY','User') }
 Set-Location C:\Matter\.worktrees\<worktree>
 opencode run --standalone --auto --model 'openrouter/poolside/laguna-s-2.1:free' -f <brief.md> 'Execute a tarefa do arquivo anexo.'
 ```

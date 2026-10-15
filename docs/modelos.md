@@ -31,11 +31,15 @@ Lista de 15/10/2026 (`GET /api/v1/models`, filtro `:free`, todos com ferramentas
 
 A lista muda. Antes de fixar um modelo novo, rode o teste de fumaça da skill `orquestrar` e registre aqui.
 
+## Chave
+
+Copie `.env.example` para `.env` na raiz deste repo e preencha `OPENROUTER_API_KEY`. O `.env` é ignorado pelo git; a skill `orquestrar` lê dele (ou da variável de ambiente do usuário, se não houver `.env`).
+
 ## Limites
 
 | | Sem créditos (hoje) | Com US$ 10 em créditos |
 |---|---|---|
-| Requisições `:free` por dia | **50** | 1.000 |
+| Requisições `:free` por dia | **50** ← plano atual | 1.000 |
 | Requisições por minuto | 20 | 20 |
 
 - Cada passo do agente é uma requisição: uma edição trivial gastou 6. Requisição que falha também conta.

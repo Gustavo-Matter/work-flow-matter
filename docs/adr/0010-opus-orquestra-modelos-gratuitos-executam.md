@@ -13,7 +13,7 @@ Todo o trabalho rodava no modelo mais caro, inclusive tarefas mecânicas: escrev
 - **Linear e `docs/`:** Haiku ou gratuito. Controle de tarefas no Linear: Haiku.
 - **Todo executor recebe brief completo** (skill `orquestrar`): objetivo, contexto e arquivos, decisões e ADRs a respeitar, critério de pronto, o que não fazer. Sem brief, não se delega.
 - **Escala depois de duas tentativas** que não passam no gate ou na revisão: sobe um degrau.
-- **A chave da OpenRouter fica na variável de ambiente `OPENROUTER_API_KEY` do usuário**, nunca em arquivo versionado.
+- **A chave da OpenRouter fica no `.env` da raiz do work-flow-matter** (ignorado pelo git; o modelo é o `.env.example`), com a variável de ambiente `OPENROUTER_API_KEY` do usuário como alternativa. Nunca em arquivo versionado.
 
 ## Alternativas descartadas
 

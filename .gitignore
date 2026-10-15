@@ -1,0 +1,4 @@
+# Segredos locais: só o .env.example é versionado
+.env
+.env.*
+!.env.example

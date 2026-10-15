@@ -61,6 +61,14 @@ Ou direto do GitHub (exige acesso ao repo pela chave da Matter):
 
 Depois de instalar, apague as cópias antigas que o plugin substitui (`~/.claude/skills/linear-tarefa/` e `~/.claude/linear/`) e troque o `~/.claude/CLAUDE.md` pelo modelo [templates/CLAUDE.global.md](templates/CLAUDE.global.md).
 
+## Configuração local
+
+```bash
+cp .env.example .env
+```
+
+Preencha `OPENROUTER_API_KEY` no `.env` (modelos gratuitos via OpenCode, ver [docs/modelos.md](docs/modelos.md)). O `.env` não é versionado.
+
 ## Como alterar
 
 1. Mude a skill ou a doc aqui, num PR.
