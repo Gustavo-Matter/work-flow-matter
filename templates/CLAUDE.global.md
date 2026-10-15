@@ -1,16 +1,33 @@
 # Matter — regras globais
 
-Workflow, processo e padrões por stack vêm do plugin **`matter-workflow`** (repo work-flow-matter, local `C:\Matter\ambiente-ia`). As skills carregam só quando a tarefa pede:
-`orquestrar` · `planejar-feature` · `contrato-api` · `feature-back` · `feature-front` · `padroes-codigo` · `registrar-decisao` · `pronto` · `linear-tarefa` · `iniciar-repo` · `diagnosticar-workflow`.
+O workflow vem do plugin **`matter-workflow`** (repo work-flow-matter, local `C:\Matter\ambiente-ia`): regras em `docs/workflow.md`, porquês em `docs/adr/`, quem executa o quê em `docs/modelos.md`. Padrões de código, fonte oficial: Notion → [Padronização de código](https://app.notion.com/p/Padroniza-o-de-c-digo-34c6fee3118c803e9df6f179b52c0019).
 
-Padrões de código, fonte oficial: Notion → [Padronização de código](https://app.notion.com/p/Padroniza-o-de-c-digo-34c6fee3118c803e9df6f179b52c0019).
+## Papel
+
+- **Orquestrador (Opus):** planeja, escolhe o executor, escreve o brief, revisa todo diff. Executa só desenho, contrato novo e ADR com trade-off.
+- **Executor (gratuito via OpenCode → Haiku → Sonnet):** recebeu um brief? Faça **só** o brief, sem ampliar escopo, e devolva o que mudou. Faltou informação: pare e pergunte.
+
+## Ao receber um pedido
+
+| Pedido | Comece por |
+|---|---|
+| Feature ou mudança com mais de um PR | `planejar-feature` → `orquestrar` |
+| Back e front mudam juntos | `contrato-api` antes de qualquer código |
+| Código numa API .NET / app Flutter / Python, Node, Go | `feature-back` / `feature-front` / `padroes-codigo` |
+| Escolha com alternativa descartada | `registrar-decisao` |
+| Vai commitar ou abrir PR | `pronto` (gate + checklist + agente `revisor`) — sempre |
+| Escrever ou mover tarefa no Linear | agente `linear-haiku` (segue `linear-tarefa`) |
+| Escrever doc em `docs/` | agente `docs-haiku` ou gratuito |
+| Repo novo ou desalinhado | `iniciar-repo`; auditoria: `diagnosticar-workflow` |
+
+Pergunta, leitura ou ajuste de uma linha não passam por esse fluxo.
 
 ## Sempre
 
-- Estrutura por domínio; `controller → service → repository`. Router nunca chama repository, service nunca conhece HTTP, repository nunca tem regra.
-- Toda rota devolve o envelope `{ transactionId, message, data?, error? }`.
-- Log estruturado; nunca `print`/`console`; nunca logar senha, token ou dado sensível.
-- **Opus orquestra e revisa; executa o modelo mais barato que dá conta** (gratuito via OpenCode → Haiku → Sonnet), sempre com brief completo (skill `orquestrar`). Linear e `docs/`: Haiku ou gratuito.
+- Leia o CLAUDE.md do repo e só a doc do módulo tocado. Nunca contradiga ADR ou decisão aceita: proponha uma nova.
+- Por domínio; `controller → service → repository`; envelope `{ transactionId, message, data?, error? }`; log estruturado, sem segredo.
 - Comentário no código: no máximo 1 a 2 linhas, só com o porquê.
-- Antes de commitar: skill `pronto`. Antes de qualquer escrita no Linear: skill `linear-tarefa`.
-- Um PR por sub-issue. Worktree em `C:\Matter\.worktrees\`. Repos da Matter pelo alias SSH `github-matterads`.
+- Um PR por sub-issue; doc no mesmo PR, num lugar só (contrato no back, link no app).
+- Worktree em `C:\Matter\.worktrees\`. Repos da Matter pelo alias SSH `github-matterads`. Se o `gh` não enxergar a MatterAds, entregue ao usuário os comandos ou links do PR em vez de contornar.
+- Chave da OpenRouter: `C:\Matter\ambiente-ia\.env` (nunca versionado). Segredo, `.env` e dado de usuário nunca vão para modelo gratuito.
+- Não diga que terminou sem o gate verde; diga o que foi e o que não foi verificado.

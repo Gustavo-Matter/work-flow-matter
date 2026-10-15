@@ -1,5 +1,9 @@
 # Changelog — plugin matter-workflow
 
+## 0.5.2 — 15/10/2026
+
+- `templates/CLAUDE.global.md`: papel de orquestrador × executor, tabela "ao receber um pedido" com a skill ou agente de entrada, agentes `linear-haiku`/`docs-haiku` nomeados, local da chave e regra do `gh` sem acesso à MatterAds.
+
 ## 0.5.1 — 15/10/2026
 
 - Chave da OpenRouter no `.env` da raiz (`.env.example` versionado, `.env` no `.gitignore`); a skill `orquestrar` lê dele, com a variável de ambiente do usuário como alternativa.
