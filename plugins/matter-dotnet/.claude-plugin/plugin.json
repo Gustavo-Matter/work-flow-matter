@@ -1,0 +1,17 @@
+{
+    "name": "matter-dotnet",
+    "version": "0.1.0",
+    "description": "Ferramentas de .NET da Matter: language server de C# (csharp-ls) para navegar por símbolo em vez de grep.",
+    "author": {
+        "name": "Gustavo",
+        "email": "gustavo@matterads.com"
+    },
+    "lspServers": {
+        "csharp": {
+            "command": "csharp-ls",
+            "extensionToLanguage": {
+                ".cs": "csharp"
+            }
+        }
+    }
+}

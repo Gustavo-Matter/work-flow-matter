@@ -27,8 +27,8 @@ Rode a skill `diagnosticar-workflow` e só depois mude. Não reescreva doc que e
 
    Não crie pasta vazia "para seguir o padrão".
 4. **Ferramentas** (lista em `docs/ferramentas.md` do work-flow-matter):
-   - app Flutter: `.mcp.json` a partir de `templates/front.mcp.json` (Dart MCP via `fvm`) e a linha "prefira o LSP a grep para achar definição e referência" no CLAUDE.md;
-   - API .NET: a mesma linha, com o LSP de C#;
+   - `.claude/settings.json` do repo a partir de `templates/project-settings.json`, habilitando `matter-workflow` e mais `matter-flutter` (app Flutter) ou `matter-dotnet` (API .NET). Sem `.mcp.json` próprio: o Dart MCP vem do plugin (ADR-0009);
+   - no CLAUDE.md, a linha "prefira o LSP a grep para achar definição e referência";
    - não instale nada fora da lista aprovada sem passar pelo critério do ADR-0008.
 5. **Gate e CI:** o comando de gate (`dotnet build` + `dotnet test` ou `make check`) descrito no CLAUDE.md e rodando no GitHub Actions. App Flutter novo: copiar o CI do `matter-flutter-template`.
 6. **Linear:** projeto e label de repositório na seção Linear do CLAUDE.md. Label inexistente: pedir ao Murilo (agente não cria label).

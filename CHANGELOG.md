@@ -1,5 +1,11 @@
 # Changelog — plugin matter-workflow
 
+## 0.4.0 — 15/10/2026
+
+- `matter-workflow` 0.4.0: `iniciar-repo` passa a habilitar os plugins pelo `.claude/settings.json` do repo.
+- Plugins novos `matter-flutter` 0.1.0 (Dart MCP e LSP do Dart via fvm) e `matter-dotnet` 0.1.0 (LSP de C#).
+- ADR-0009; `templates/project-settings.json` no lugar de `templates/front.mcp.json`.
+
 ## 0.3.0 — 15/10/2026
 
 - `docs/ferramentas.md` com as ferramentas de terceiros aprovadas e recusadas, ADR-0008 com o critério e regra 11 no workflow.

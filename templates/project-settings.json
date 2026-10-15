@@ -1,0 +1,13 @@
+{
+    "extraKnownMarketplaces": {
+        "matter": {
+            "source": {
+                "source": "github",
+                "repo": "Gustavo-Matter/work-flow-matter"
+            }
+        }
+    },
+    "enabledPlugins": {
+        "matter-workflow@matter": true
+    }
+}

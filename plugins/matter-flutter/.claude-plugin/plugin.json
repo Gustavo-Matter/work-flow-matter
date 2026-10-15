@@ -1,0 +1,18 @@
+{
+    "name": "matter-flutter",
+    "version": "0.1.0",
+    "description": "Ferramentas de Flutter da Matter: Dart and Flutter MCP server e language server do Dart, ambos pelo SDK fixado no FVM do projeto.",
+    "author": {
+        "name": "Gustavo",
+        "email": "gustavo@matterads.com"
+    },
+    "lspServers": {
+        "dart": {
+            "command": "fvm",
+            "args": ["dart", "language-server", "--protocol=lsp"],
+            "extensionToLanguage": {
+                ".dart": "dart"
+            }
+        }
+    }
+}

@@ -8,7 +8,17 @@
         {
             "name": "matter-workflow",
             "source": "./plugins/matter-workflow",
-            "description": "Workflow da Matter com o Claude Code para back (.NET) e front (Flutter)."
+            "description": "Workflow da Matter com o Claude Code para back (.NET) e front (Flutter): skills, agente revisor e diretrizes do Linear."
+        },
+        {
+            "name": "matter-flutter",
+            "source": "./plugins/matter-flutter",
+            "description": "Dart and Flutter MCP server e language server do Dart, pelo FVM do projeto. Habilitar só em apps Flutter."
+        },
+        {
+            "name": "matter-dotnet",
+            "source": "./plugins/matter-dotnet",
+            "description": "Language server de C# (csharp-ls). Habilitar só em APIs .NET."
         }
     ]
 }

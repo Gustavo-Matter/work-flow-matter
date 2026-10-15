@@ -22,6 +22,6 @@ Remoto: `git@github-matterads:Gustavo-Matter/work-flow-matter.git`. Use o alias 
 
 - Skill: frontmatter com `name` igual ao nome da pasta e `description` que diga **quando** usar. Ela é carregada sob demanda, então pode trazer regras de uma stack só. É o motivo de essas regras não ficarem no `CLAUDE.md` global.
 - Mantenha cada skill curta e verificável (checklist, comando, caminho). Regra que não muda o comportamento da IA não entra.
-- Toda mudança no plugin sobe a `version` em `plugins/matter-workflow/.claude-plugin/plugin.json` e ganha entrada no `CHANGELOG.md`. Skill ou agente novo também entra na tabela do `README.md` e na lista de `templates/CLAUDE.global.md`.
+- Há três plugins em `plugins/` (`matter-workflow` core, `matter-flutter`, `matter-dotnet`), listados em `.claude-plugin/marketplace.json`; só o core tem skills, os outros entregam MCP e LSP (ADR-0009). Toda mudança num plugin sobe a `version` do `plugin.json` dele e ganha entrada no `CHANGELOG.md`. Skill ou agente novo também entra na tabela do `README.md` e na lista de `templates/CLAUDE.global.md`.
 - Para testar localmente: `/plugin marketplace add C:\Matter\ambiente-ia`, depois `/plugin install matter-workflow@matter`. As skills aparecem como `/matter-workflow:<skill>`.
 - Docs e skills em português com acento. Commits em português, Conventional Commits.

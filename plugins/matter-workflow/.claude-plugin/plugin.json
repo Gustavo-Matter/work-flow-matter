@@ -1,6 +1,6 @@
 {
     "name": "matter-workflow",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "description": "Workflow da Matter com o Claude Code: planejamento no Linear, feature de back (.NET) e front (Flutter), contrato de API, checklist de pronto e revisor antes do commit.",
     "author": {
         "name": "Gustavo",

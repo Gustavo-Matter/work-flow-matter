@@ -2,6 +2,26 @@
 
 Plugins, skills e MCPs aprovados para o desenvolvimento de back e front. Critério em [ADR-0008](adr/0008-criterio-para-ferramentas-de-terceiros.md). Pesquisa de 15/10/2026.
 
+## Como as ferramentas chegam aos projetos
+
+[ADR-0009](adr/0009-ferramentas-de-stack-em-plugins-separados.md): três plugins no marketplace `matter`, e cada repo habilita o que usa no seu `.claude/settings.json` (modelo: [templates/project-settings.json](../templates/project-settings.json)).
+
+| Plugin nosso | Entrega | Habilitar em |
+|---|---|---|
+| `matter-workflow` | Skills, agente `revisor`, diretrizes do Linear | Todos os repos |
+| `matter-flutter` | Dart MCP + LSP do Dart, via `fvm` | Apps Flutter |
+| `matter-dotnet` | LSP de C# (`csharp-ls`) | APIs .NET |
+
+Requisitos na máquina: `fvm` com o SDK do projeto (Flutter) e `dotnet tool install -g csharp-ls` (.NET).
+
+### Verificação depois de instalar
+
+Os campos de LSP e MCP dos plugins vêm da documentação e ainda não foram exercitados. Confirme num app Flutter e numa API .NET:
+1. `/plugin` lista `matter-workflow`, `matter-flutter` ou `matter-dotnet` como habilitados e sem erro.
+2. `/mcp` mostra o servidor `dart` conectado (só no app Flutter).
+3. Peça "onde é usado o símbolo X" e confira nas ferramentas que o LSP respondeu em vez de grep.
+4. Falhou: ajuste o `plugin.json` aqui, suba a versão e registre no CHANGELOG.
+
 ## Já instalados
 
 | Ferramenta | Uso |
@@ -15,12 +35,14 @@ Plugins, skills e MCPs aprovados para o desenvolvimento de back e front. Critér
 
 | Ferramenta | Stack | Para quê | Como instalar |
 |---|---|---|---|
-| **Dart and Flutter MCP server** (oficial) | Front | Analisar, testar, ver a árvore de widgets do app rodando e hot reload | `.mcp.json` do repo ([modelo](../templates/front.mcp.json)); usa `fvm dart` para casar com o SDK do projeto |
-| **LSP de C#** (`csharp-ls`, marketplace oficial) | Back | Navegação por símbolo em vez de grep | `/plugin install` no terminal; exige `csharp-ls` no PATH (`dotnet tool install -g csharp-ls`) |
-| **LSP de Dart** (`dart-analyzer`, marketplace comunitário `boostvolt/claude-code-lsps`) | Front | O mesmo, para Flutter | `/plugin marketplace add boostvolt/claude-code-lsps`, depois instalar o `dart-analyzer`; exige o Dart SDK no PATH |
-| **Very Good AI Flutter Plugin** | Front | Agente `flutter-reviewer`, loop `green-gate`, skills de Bloc e arquitetura em camadas | Card do app / `/plugin`. **Traz hooks (`PreToolUse`, `PostToolUse`, `SessionStart`) e dois MCPs: leia antes** |
-| **Token Inspector** | Ambos | `mcp-audit`, `find-bloat`, `slim-instructions` | Card do app / `/plugin`. Só skills |
-| **AI Ready Design System** | Design | Auditar o design system do Figma em 28 regras | Card do app / `/plugin`. Só skill; uso pontual |
+| **Dart and Flutter MCP server** (oficial) | Front | Analisar, testar, ver a árvore de widgets do app rodando e hot reload | Plugin `matter-flutter` (usa `fvm dart` para casar com o SDK do projeto) |
+| **LSP de C#** (`csharp-ls`) | Back | Navegação por símbolo em vez de grep | Plugin `matter-dotnet`; exige `csharp-ls` no PATH (`dotnet tool install -g csharp-ls`) |
+| **LSP de Dart** (`dart language-server`, do SDK) | Front | O mesmo, para Flutter | Plugin `matter-flutter` |
+| **Very Good AI Flutter Plugin** | Front | Agente `flutter-reviewer`, loop `green-gate`, skills de Bloc e arquitetura em camadas | Catálogo do claude.ai, por pessoa. **Traz hooks (`PreToolUse`, `PostToolUse`, `SessionStart`) e dois MCPs (um deles `dart`, que duplica o do `matter-flutter`): leia antes** |
+| **Token Inspector** | Ambos | `mcp-audit`, `find-bloat`, `slim-instructions` | Catálogo do claude.ai, por pessoa. Só skills |
+| **AI Ready Design System** | Design | Auditar o design system do Figma em 28 regras | Catálogo do claude.ai, por pessoa. Só skill; uso pontual |
+
+Esses três não entram nos plugins da Matter (ADR-0009): têm autor e hooks próprios. Cada pessoa os instala pelo catálogo.
 
 O LSP só ajuda se o Claude o usar: quando instalar, acrescente ao CLAUDE.md do repo "prefira o LSP a grep para achar definição e referência".
 

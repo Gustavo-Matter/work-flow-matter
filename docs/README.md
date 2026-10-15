@@ -20,6 +20,7 @@
 | [0006](adr/0006-revisao-antes-do-commit.md) | A revisão acontece antes do commit |
 | [0007](adr/0007-criterio-de-adr.md) | ADR só para decisão com alternativa descartada |
 | [0008](adr/0008-criterio-para-ferramentas-de-terceiros.md) | Critério para plugins, skills e MCPs de terceiros |
+| [0009](adr/0009-ferramentas-de-stack-em-plugins-separados.md) | Ferramentas de stack são plugins separados do core |
 
 ## Diagnósticos
 
