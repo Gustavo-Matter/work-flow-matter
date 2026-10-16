@@ -5,7 +5,7 @@ description: Use (no Opus) para executar um plano ou uma sub-issue delegando a m
 
 # orquestrar
 
-O Opus pensa e revisa; quem digita é o modelo mais barato que dá conta. Tabela de papéis e limites: `docs/modelos.md` do work-flow-matter (`C:\Matter\ambiente-ia`).
+O Opus pensa e revisa; quem digita é o modelo mais barato que dá conta. **Quem orquestra é sempre o agente que fez o planejamento da tarefa** (`planejar-feature`): ele dispara, revisa e escala até o fim, e não delega a orquestração a outro agente nem a um executor. Tabela de papéis e limites: `docs/modelos.md` do work-flow-matter (`$MATTER_HOME/work-flow-matter`).
 
 ## 1. Escolha o executor
 
@@ -49,15 +49,27 @@ Brief longo é sinal de tarefa grande: quebre antes.
 
 ## 3. Dispare
 
-**Gratuito (OpenCode):** grave o brief num arquivo e rode no worktree da tarefa:
+**Gratuito (OpenCode v2):** exige o OpenCode **v2** (`npm i -g @opencode/cli`; o pacote antigo `opencode-ai` é a 1.x e não tem `--standalone`). Grave o brief num arquivo e rode no worktree da tarefa. A chave vem da variável `OPENROUTER_API_KEY` do usuário (no Mac, no `~/.zshrc`); se ela não existir, do `.env` na raiz do work-flow-matter (`$MATTER_HOME`, padrão `~/Documents/matter` no Mac e `C:\Matter` no Windows). Nunca imprima a chave.
 
-```powershell
-# Chave: C:\Matter\ambiente-ia\.env (fora do git); se não houver, a variável de ambiente do usuário
-$envFile = 'C:\Matter\ambiente-ia\.env'
-$env:OPENROUTER_API_KEY = if (Test-Path $envFile) { ((Get-Content $envFile | Where-Object { $_ -match '^OPENROUTER_API_KEY=' }) -split '=', 2)[1] } else { [Environment]::GetEnvironmentVariable('OPENROUTER_API_KEY','User') }
-Set-Location C:\Matter\.worktrees\<worktree>
+macOS / Linux:
+
+```bash
+MATTER_HOME="${MATTER_HOME:-$HOME/Documents/matter}"
+[ -n "$OPENROUTER_API_KEY" ] || export OPENROUTER_API_KEY="$(sed -n 's/^OPENROUTER_API_KEY=//p' "$MATTER_HOME/work-flow-matter/.env")"
+cd "$MATTER_HOME/.worktrees/<worktree>"
 opencode run --standalone --auto --model 'openrouter/poolside/laguna-s-2.1:free' -f <brief.md> 'Execute a tarefa do arquivo anexo.'
 ```
+
+Windows (PowerShell):
+
+```powershell
+$home_ = if ($env:MATTER_HOME) { $env:MATTER_HOME } else { 'C:\Matter' }
+if (-not $env:OPENROUTER_API_KEY) { $env:OPENROUTER_API_KEY = ((Get-Content "$home_\work-flow-matter\.env" | Where-Object { $_ -match '^OPENROUTER_API_KEY=' }) -split '=', 2)[1] }
+Set-Location "$home_\.worktrees\<worktree>"
+opencode run --standalone --auto --model 'openrouter/poolside/laguna-s-2.1:free' -f <brief.md> 'Execute a tarefa do arquivo anexo.'
+```
+
+O `--auto` aprova tudo que não estiver negado, inclusive ler `.env`: nunca rode o gratuito num worktree com segredo em arquivo. A chave guardada por `opencode auth login` não funcionou com `run` na v2.0.31 (16/10/2026); use a variável.
 
 Rode em segundo plano quando passar de ~2 minutos. Limite: 50 requisições/dia sem créditos; cada passo do agente gasta uma.
 

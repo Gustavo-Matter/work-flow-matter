@@ -23,9 +23,12 @@
 | [0008](adr/0008-criterio-para-ferramentas-de-terceiros.md) | Critério para plugins, skills e MCPs de terceiros |
 | [0009](adr/0009-ferramentas-de-stack-em-plugins-separados.md) | Ferramentas de stack são plugins separados do core |
 | [0010](adr/0010-opus-orquestra-modelos-gratuitos-executam.md) | Opus orquestra e revisa; modelos gratuitos e Haiku executam |
+| [0011](adr/0011-kit-e-template-flutter-no-workflow.md) | O kit e o template Flutter fazem parte do workflow, e o kit é consumido por tag |
+| [0012](adr/0012-testes-flutter-com-mocktail.md) | Testes Flutter com mock (`mocktail`), não com fake escrito à mão |
 
 ## Diagnósticos
 
 - [2026-10-15 — ambiente](diagnosticos/2026-10-15-ambiente.md)
 - [2026-10-15 — APIs .NET](diagnosticos/2026-10-15-apis-dotnet.md)
 - [2026-10-15 — apps Flutter](diagnosticos/2026-10-15-apps-flutter.md)
+- [2026-10-16 — Flutter (kit, template, apps) e ambiente Mac](diagnosticos/2026-10-16-flutter-e-mac.md)
