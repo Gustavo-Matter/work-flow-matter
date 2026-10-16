@@ -1,5 +1,15 @@
 # Changelog — plugin matter-workflow
 
+## 0.6.0 — 16/10/2026
+
+- Flutter mapeado por inteiro ([diagnóstico de 16/10](docs/diagnosticos/2026-10-16-flutter-e-mac.md)): kit, template e os dois apps.
+- `feature-front` reescrita: perfil por app (template/muma × bencao), scaffold pelo brick `matterads_feature`, checagem de Figma explícita, checklist com os defeitos reais dos dois apps e itens condicionais (l10n, tema escuro, push, ads, plataforma).
+- Skill nova `kit-flutter`: mudança no `matter-mobile-kit` e no `matter-flutter-template` (componente, token, release-please, consumo por tag, bricks). ADR-0011.
+- Testes Flutter com `mocktail`, sem fake escrito à mão (ADR-0012); `revisor` cobra.
+- `orquestrar`: OpenCode v2 obrigatório, comando em bash e em PowerShell, raiz `$MATTER_HOME`, chave pela variável `OPENROUTER_API_KEY` primeiro.
+- Caminhos do Windows trocados por `$MATTER_HOME` (Mac `~/Documents/matter`, Windows `C:\Matter`); a pasta do repo passa a ser `work-flow-matter` (no Windows, renomeie `ambiente-ia`).
+- `matter-flutter` 0.1.1: só documentação; instalação no escopo local.
+
 ## 0.5.3 — 15/10/2026
 
 - Prioridade do modelo gratuito explícita: outro executor só com motivo registrado na sub-issue (global, `orquestrar`, `planejar-feature`, `modelos.md`, ADR-0010). Doc passa a ser gratuito primeiro; Linear segue no Haiku porque o OpenCode não tem o Linear.

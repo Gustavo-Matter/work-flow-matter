@@ -21,13 +21,15 @@ Quem faz o quê. Regra e porquê no [ADR-0010](adr/0010-opus-orquestra-modelos-g
 
 Escala: duas tentativas que não passam no gate ou na revisão sobem um degrau. Nunca suba direto para o Opus sem tentar o degrau abaixo, a não ser que a tarefa seja de desenho.
 
-## Modelos gratuitos (OpenRouter, via OpenCode)
+## Modelos gratuitos (OpenRouter, via OpenCode v2)
+
+Exige o OpenCode **v2** (`npm i -g @opencode/cli`, ou `brew install anomalyco/tap/opencode-v2`). O pacote `opencode-ai` é a 1.x, sem `--standalone`.
 
 Lista de 15/10/2026 (`GET /api/v1/models`, filtro `:free`, todos com ferramentas).
 
 | Modelo | Contexto | Uso | Testado |
 |---|---|---|---|
-| `poolside/laguna-s-2.1:free` | 262k | Código: primeira escolha | ✓ corrigiu bug de uma linha, 6 requisições, 56 s |
+| `poolside/laguna-s-2.1:free` | 262k | Código: primeira escolha | ✓ Windows: bug de uma linha, 6 requisições, 56 s · Mac (v2.0.31): idem, 34 s |
 | `cohere/north-mini-code:free` | 256k | Código: alternativa | — |
 | `nvidia/nemotron-3-super-120b-a12b:free` | 262k | Código e doc mais longos | — |
 | `thinkingmachines/inkling:free` | 1M | Leitura de muito contexto | — |
@@ -37,7 +39,7 @@ A lista muda. Antes de fixar um modelo novo, rode o teste de fumaça da skill `o
 
 ## Chave
 
-Copie `.env.example` para `.env` na raiz deste repo e preencha `OPENROUTER_API_KEY`. O `.env` é ignorado pelo git; a skill `orquestrar` lê dele (ou da variável de ambiente do usuário, se não houver `.env`).
+Variável `OPENROUTER_API_KEY` do usuário (Mac: `~/.zshrc`) ou `.env` na raiz deste repo (copie o `.env.example`). A skill `orquestrar` usa a variável e, sem ela, o `.env`. O `.env` é ignorado pelo git. A chave guardada por `opencode auth login` não funcionou com `opencode run` na v2.0.31.
 
 ## Limites
 

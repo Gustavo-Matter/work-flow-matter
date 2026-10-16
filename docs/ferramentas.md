@@ -9,14 +9,14 @@ Plugins, skills e MCPs aprovados para o desenvolvimento de back e front. Critér
 | Plugin nosso | Entrega | Habilitar em |
 |---|---|---|
 | `matter-workflow` | Skills, agente `revisor`, diretrizes do Linear | Todos os repos |
-| `matter-flutter` | Dart MCP + LSP do Dart, via `fvm` | Apps Flutter |
+| `matter-flutter` | Dart MCP + LSP do Dart, via `fvm` | Apps Flutter, no escopo **local** (`--scope local`); no escopo user o MCP sobe em todo projeto |
 | `matter-dotnet` | LSP de C# (`csharp-ls`) | APIs .NET |
 
 Requisitos na máquina: `fvm` com o SDK do projeto (Flutter) e `dotnet tool install -g csharp-ls` (.NET).
 
 ### Verificação depois de instalar
 
-Os campos de LSP e MCP dos plugins vêm da documentação e ainda não foram exercitados. Confirme num app Flutter e numa API .NET:
+16/10/2026, Mac: `matter-flutter` instalado no muma-fit, `claude mcp list` mostra `plugin:matter-flutter:dart ✔ Connected`. Falta conferir o LSP do Dart e o `matter-dotnet`. Confirme num app Flutter e numa API .NET:
 1. `/plugin` lista `matter-workflow`, `matter-flutter` ou `matter-dotnet` como habilitados e sem erro.
 2. `/mcp` mostra o servidor `dart` conectado (só no app Flutter).
 3. Peça "onde é usado o símbolo X" e confira nas ferramentas que o LSP respondeu em vez de grep.

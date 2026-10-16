@@ -9,6 +9,7 @@ O jeito de trabalhar com o Claude Code nos projetos da Matter, para back (.NET) 
 1. planejar   /matter-workflow:planejar-feature    tarefa central + sub-issues; plano na descrição da central
 2. contrato   /matter-workflow:contrato-api        só quando back e front mudam juntos
 3. codar      /matter-workflow:feature-back        ou   feature-front   (princípios comuns: padroes-codigo)
+   kit        /matter-workflow:kit-flutter         mudança no matter-mobile-kit ou no matter-flutter-template
    decidir    /matter-workflow:registrar-decisao   quando uma escolha pode virar ADR
 4. pronto     /matter-workflow:pronto              gate + checklist + agente revisor, ANTES do commit
 5. PR         um por sub-issue, com a doc daquela sub-issue dentro
@@ -31,10 +32,12 @@ Da etapa 1 à 4, o **Opus orquestra** (skill `orquestrar`): escolhe o executor d
 | 7 | **Regra de stack em skill**, não no CLAUDE.md global | [ADR-0005](adr/0005-regra-de-stack-em-skill.md) |
 | 8 | **Processo vive neste repo** e chega pelo plugin; nada de diretrizes copiadas em cada projeto | [ADR-0001](adr/0001-plugin-distribui-o-workflow.md) |
 | 9 | **Tela com Figma** só começa com o link e o node na sub-issue, lida pela skill do Figma | `feature-front` |
-| 10 | **Higiene:** worktree em `C:\Matter\.worktrees\`; branch padrão = branch ativa; branches mergeadas apagadas; segredo fora do git; `settings.local.json` com padrões; uma memória só; MCP ligado só quando o trabalho do dia precisa | `iniciar-repo`, `diagnosticar-workflow` |
+| 10 | **Higiene:** worktree em `$MATTER_HOME/.worktrees/`; branch padrão = branch ativa; branches mergeadas apagadas; segredo fora do git; `settings.local.json` com padrões; uma memória só; MCP ligado só quando o trabalho do dia precisa | `iniciar-repo`, `diagnosticar-workflow` |
 | 11 | **Ferramenta de terceiros** só entra com problema medido, hooks lidos e custo de contexto baixo; a lista aprovada está em [ferramentas.md](ferramentas.md) | [ADR-0008](adr/0008-criterio-para-ferramentas-de-terceiros.md) |
 | 12 | **Opus orquestra e revisa; executa o modelo mais barato que dá conta** (gratuito → Haiku → Sonnet → Opus), sempre com brief completo. Linear e docs: Haiku ou gratuito | [ADR-0010](adr/0010-opus-orquestra-modelos-gratuitos-executam.md), [modelos.md](modelos.md), skill `orquestrar` |
 | 13 | **Comentário no código: no máximo 1 a 2 linhas**, só com o porquê | `padroes-codigo`, `revisor` |
+| 14 | **Flutter: o que é comum vai pelo kit.** Componente, token e serviço compartilhado mudam no `matter-mobile-kit`, consumido por tag; feature nova nasce do brick `matterads_feature` | [ADR-0011](adr/0011-kit-e-template-flutter-no-workflow.md), skill `kit-flutter` |
+| 15 | **Teste com mock (`mocktail`)**, não com fake escrito à mão | [ADR-0012](adr/0012-testes-flutter-com-mocktail.md), `feature-front` |
 
 ### Onde vive cada informação
 
@@ -53,10 +56,11 @@ Da etapa 1 à 4, o **Opus orquestra** (skill `orquestrar`): escolhe o executor d
 
 | | Back | Front |
 |---|---|---|
-| Padrão | .NET 8+/10, módulos por domínio, `controller → service → repository`, envelope `ApiResponse` | Flutter via FVM, features por domínio, Riverpod + go_router + fpdart + `matter_core`/`matter_design_system` (`matter-flutter-template`) |
-| Gate | `dotnet build` sem aviso + `dotnet test` | `make check` (format + analyze + arquitetura + testes) |
-| Skill | `feature-back` | `feature-front` |
-| Repos | `muma-fit-api`, `bencaodiaria-app-api` | `muma-fit`, `bencaodiaria-app-mobile` (legado em Bloc/get_it: segue o padrão do próprio repo) |
+| Padrão | .NET 8+/10, módulos por domínio, `controller → service → repository`, envelope `ApiResponse` | Flutter via FVM, features por domínio, Riverpod + go_router + fpdart + `matter_core`/`matter_design_system` (`matter-flutter-template`); perfil de cada app na `feature-front` |
+| Gate | `dotnet build` sem aviso + `dotnet test` | `make check` (format + analyze + arquitetura + testes); bencao: format + analyze + test |
+| Teste | unidade + integração da rota | `mocktail` (ADR-0012) |
+| Skill | `feature-back` | `feature-front`; kit e template: `kit-flutter` |
+| Repos | `muma-fit-api`, `bencaodiaria-app-api` | `muma-fit`, `bencaodiaria-app-mobile` (legado em Bloc/get_it: segue o padrão do próprio repo); compartilhados: `matter-mobile-kit`, `matter-flutter-template` |
 
 Python, Node e Go: skill `padroes-codigo`.
 

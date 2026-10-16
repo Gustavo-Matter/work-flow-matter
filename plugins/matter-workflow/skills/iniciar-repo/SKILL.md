@@ -5,7 +5,7 @@ description: Use ao criar um repositório novo da Matter (API .NET ou app Flutte
 
 # iniciar-repo
 
-Deixa o repo pronto para o Claude trabalhar com pouco contexto e sem adivinhar. Os modelos estão no repositório work-flow-matter (`C:\Matter\ambiente-ia\templates\`).
+Deixa o repo pronto para o Claude trabalhar com pouco contexto e sem adivinhar. Os modelos estão no repositório work-flow-matter (`$MATTER_HOME/work-flow-matter/templates/`).
 
 ## Repo existente: meça primeiro
 
@@ -36,8 +36,8 @@ Rode a skill `diagnosticar-workflow` e só depois mude. Não reescreva doc que e
    - branch padrão do GitHub = branch ativa;
    - branches já mergeadas e branches de processo (`docs/diretrizes-linear`) apagadas;
    - `.env` e segredos fora do git, inclusive no histórico de branches antigas;
-   - remoto pelo alias SSH `github-matterads`;
-   - worktrees em `C:\Matter\.worktrees\`;
+   - remoto pelo alias SSH da conta `Gustavo-Matter` (`github-matterads` no Windows, `github-work` no Mac);
+   - worktrees em `$MATTER_HOME/.worktrees/`;
    - `.claude/settings.local.json` com padrões de comando, não comandos únicos.
 8. **Processo não entra no repo:** nada de `docs/linear.md` ou diretrizes copiadas; elas vêm do plugin.
 

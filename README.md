@@ -31,7 +31,8 @@ Cada repo habilita o que usa no próprio `.claude/settings.json` ([modelo](templ
 | `planejar-feature` | Antes de trabalho com mais de um PR: sub-issues pequenas, plano na tarefa central |
 | `contrato-api` | Back e front mudam juntos, ou o app precisa de algo que a API não tem |
 | `feature-back` | Rota, regra ou persistência numa API .NET |
-| `feature-front` | Tela, estado ou integração num app Flutter |
+| `feature-front` | Tela, estado ou integração num app Flutter (perfil por app, checklist, testes com `mocktail`) |
+| `kit-flutter` | Mudança no `matter-mobile-kit` ou no `matter-flutter-template`: componente, token, release, bricks |
 | `padroes-codigo` | Código em Python, Node ou Go; princípios comuns (estrutura, fluxo, envelope, logs) |
 | `registrar-decisao` | Uma escolha pode virar ADR: critério e formato |
 | `pronto` | Antes do commit e do PR: gate + checklist + revisor |
@@ -48,10 +49,10 @@ Cada repo habilita o que usa no próprio `.claude/settings.json` ([modelo](templ
 Num terminal `claude` interativo:
 
 ```
-/plugin marketplace add C:\Matter\ambiente-ia
+/plugin marketplace add ~/Documents/matter/work-flow-matter   # Windows: C:\Matter\work-flow-matter
 /plugin install matter-workflow@matter
-/plugin install matter-flutter@matter   # só em máquina/projeto Flutter
-/plugin install matter-dotnet@matter    # só em máquina/projeto .NET
+/plugin install matter-flutter@matter --scope local   # dentro de cada app Flutter
+/plugin install matter-dotnet@matter --scope local    # dentro de cada API .NET
 ```
 
 Ou direto do GitHub (exige acesso ao repo pela chave da Matter):
@@ -68,7 +69,7 @@ Depois de instalar, apague as cópias antigas que o plugin substitui (`~/.claude
 cp .env.example .env
 ```
 
-Preencha `OPENROUTER_API_KEY` no `.env` (modelos gratuitos via OpenCode, ver [docs/modelos.md](docs/modelos.md)). O `.env` não é versionado.
+Preencha `OPENROUTER_API_KEY` no `.env`, ou exporte a variável no shell (`~/.zshrc`). Modelos gratuitos via OpenCode **v2** (`npm i -g @opencode/cli`), ver [docs/modelos.md](docs/modelos.md). O `.env` não é versionado.
 
 ## Como alterar
 

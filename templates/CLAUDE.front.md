@@ -13,6 +13,11 @@
 | HTTP | <dio via matter_core> |
 | Erro | <Either<Failure, T> / AppFailure> |
 | Design system | <matter_design_system / tokens locais> |
+| Imagem de rede | <MatterNetworkImage / AppNetworkImage> |
+| Teste | `mocktail` (ADR-0012 do workflow) |
+| l10n | <não há / ARB pt, en, es> |
+| Tema | <só claro / claro e escuro> |
+| Kit | <matter_core core-vX.Y.Z · matter_design_system design_system-vX.Y.Z / não usa> |
 
 ## Comandos
 
@@ -21,6 +26,8 @@ make setup   # primeira vez
 make gen     # codegen
 make check   # o gate: format + analyze + arquitetura + testes
 ```
+
+<CI: ligado / pausado (o gate é só local).> Prefira o LSP a grep para achar definição e referência.
 
 ## Armadilhas
 
