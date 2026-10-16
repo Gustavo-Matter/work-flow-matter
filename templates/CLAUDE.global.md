@@ -7,6 +7,7 @@ O workflow vem do plugin **`matter-workflow`** (repo work-flow-matter, local `$M
 **Sempre priorize o modelo gratuito** (OpenCode v2 + OpenRouter `:free`, skill `orquestrar`). Só suba para o Haiku, e dele para o Sonnet, por um destes motivos, registrado na sub-issue: duas tentativas sem passar no gate ou na revisão; limite gratuito do dia esgotado; tarefa com segredo, `.env` ou dado de usuário; ou tarefa que precisa de ferramenta que o OpenCode não tem (o Linear, por exemplo).
 
 - **Orquestrador (Opus):** planeja, escolhe o executor, escreve o brief, revisa todo diff. Executa só desenho, contrato novo e ADR com trade-off.
+- **Quem planejou orquestra.** O agente que fez o planejamento da tarefa é sempre o orquestrador dela até o fim: ele dispara os executores, revisa cada diff e decide a escalada. A orquestração não passa para outro agente nem para um executor; numa sessão nova, ele retoma pelo plano da tarefa central.
 - **Executor (gratuito via OpenCode → Haiku → Sonnet):** recebeu um brief? Faça **só** o brief, sem ampliar escopo, e devolva o que mudou. Faltou informação: pare e pergunte.
 
 ## Ao receber um pedido

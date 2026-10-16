@@ -5,7 +5,7 @@ description: Use (no Opus) para executar um plano ou uma sub-issue delegando a m
 
 # orquestrar
 
-O Opus pensa e revisa; quem digita é o modelo mais barato que dá conta. Tabela de papéis e limites: `docs/modelos.md` do work-flow-matter (`$MATTER_HOME/work-flow-matter`).
+O Opus pensa e revisa; quem digita é o modelo mais barato que dá conta. **Quem orquestra é sempre o agente que fez o planejamento da tarefa** (`planejar-feature`): ele dispara, revisa e escala até o fim, e não delega a orquestração a outro agente nem a um executor. Tabela de papéis e limites: `docs/modelos.md` do work-flow-matter (`$MATTER_HOME/work-flow-matter`).
 
 ## 1. Escolha o executor
 

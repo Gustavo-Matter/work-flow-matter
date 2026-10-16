@@ -8,6 +8,7 @@
 - Testes Flutter com `mocktail`, sem fake escrito à mão (ADR-0012); `revisor` cobra.
 - `orquestrar`: OpenCode v2 obrigatório, comando em bash e em PowerShell, raiz `$MATTER_HOME`, chave pela variável `OPENROUTER_API_KEY` primeiro.
 - Caminhos do Windows trocados por `$MATTER_HOME` (Mac `~/Documents/matter`, Windows `C:\Matter`); a pasta do repo passa a ser `work-flow-matter` (no Windows, renomeie `ambiente-ia`).
+- O agente que planejou a tarefa é sempre o orquestrador dela (global, `orquestrar`).
 - `matter-flutter` 0.1.1: só documentação; instalação no escopo local.
 
 ## 0.5.3 — 15/10/2026
