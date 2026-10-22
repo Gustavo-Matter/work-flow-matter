@@ -9,7 +9,7 @@ O Opus pensa e revisa; quem digita é o modelo mais barato que dá conta. **Quem
 
 ## 1. Escolha o executor
 
-**Sempre comece pelo gratuito.** Só sobe para o Haiku (e dele para o Sonnet) por um destes motivos, **registrado na sub-issue**: duas tentativas sem passar no gate ou na revisão; limite gratuito do dia esgotado; segredo, `.env` ou dado de usuário; ferramenta que o OpenCode não tem (Linear).
+**Sempre comece pelo gratuito.** Só sobe para o Haiku (e dele para o Sonnet) por um destes motivos, **registrado na sub-issue**: duas tentativas sem passar no gate ou na revisão; limites gratuitos do dia esgotados (OpenRouter e o do próprio OpenCode); segredo, `.env` ou dado de usuário; ferramenta que o OpenCode não tem (Linear).
 - Desenho, contrato novo, ADR com trade-off, mudança de arquitetura: Opus faz.
 - Código ou teste com brief fechado: gratuito.
 - Linear: agente `linear-haiku` (exceção: o OpenCode não tem o Linear). Doc: gratuito.
@@ -71,11 +71,11 @@ opencode run --standalone --auto --model 'openrouter/poolside/laguna-s-2.1:free'
 
 O `--auto` aprova tudo que não estiver negado, inclusive ler `.env`: nunca rode o gratuito num worktree com segredo em arquivo. A chave guardada por `opencode auth login` não funcionou com `run` na v2.0.31 (16/10/2026); use a variável.
 
-Rode em segundo plano quando passar de ~2 minutos. Limite: 50 requisições/dia sem créditos; cada passo do agente gasta uma.
+Rode em segundo plano quando passar de ~2 minutos. Limite: 50 requisições/dia sem créditos; cada passo do agente gasta uma. Esgotou? O OpenCode também tem modelos gratuitos próprios (`opencode models`, prefixos `opencode/` e `opencode-go/`) com limite à parte: veja `docs/modelos.md` antes de subir para o Haiku.
 
 **Haiku/Sonnet:** ferramenta Agent com `model: "haiku"` ou `"sonnet"` e o brief como prompt, ou os agentes `linear-haiku` e `docs-haiku`.
 
-**Teste de fumaça de um modelo gratuito novo:** um arquivo descartável com um bug de uma linha, fora de qualquer repo; anote requisições e tempo em `docs/modelos.md`.
+**Teste de fumaça de um modelo gratuito novo:** um arquivo descartável com um bug de uma linha, fora de qualquer repo; anote requisições e tempo em `docs/modelos.md`. Rode com limite de tempo (`perl -e 'alarm 120; exec @ARGV' opencode run ...`; o macOS não tem `timeout`): um modelo que não responde fica pendurado para sempre.
 
 ## 4. Revise (sempre no Opus)
 

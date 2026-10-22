@@ -1,5 +1,9 @@
 # Changelog — plugin matter-workflow
 
+## Não lançado
+
+- Os modelos gratuitos do próprio OpenCode entram na escada, com limite à parte do da OpenRouter: esgotou a OpenRouter, tente o OpenCode antes do Haiku. Ainda não validados (execução pendurada em 22/10/2026); `docs/modelos.md` traz o teste de fumaça com limite de tempo.
+
 ## 0.6.0 — 16/10/2026
 
 - Flutter mapeado por inteiro ([diagnóstico de 16/10](docs/diagnosticos/2026-10-16-flutter-e-mac.md)): kit, template e os dois apps.
