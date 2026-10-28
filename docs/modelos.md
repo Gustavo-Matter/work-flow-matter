@@ -37,6 +37,8 @@ Lista de 15/10/2026 (`GET /api/v1/models`, filtro `:free`, todos com ferramentas
 
 A lista muda. Antes de fixar um modelo novo, rode o teste de fumaça da skill `orquestrar` e registre aqui.
 
+**28/10/2026:** `laguna-s-2.1` e `nemotron-3-super-120b` responderam `Model unavailable`. Confira o que existe com `opencode models | grep ':free'` antes de disparar; em 28/10 havia `cohere/north-mini-code`, `nvidia/nemotron-3-ultra-550b-a55b`, `thinkingmachines/inkling` e `google/gemma-4-31b-it`. No Mac não há `timeout`: rode o `opencode run` em segundo plano sem ele.
+
 ## Limite gratuito do próprio OpenCode
 
 O OpenCode instalado traz provedores próprios com modelos gratuitos, e o limite deles não é o da OpenRouter. `opencode models` lista; em 22/10/2026: `opencode/big-pickle`, `opencode/deepseek-v4.1-flash-free`, `opencode/glm-5.3-flash-free`, `opencode/mimo-v2.6-flash-free`, `opencode/minimax-m3.1-flash-free`, `opencode/nemotron-3-ultra-free`, `opencode/flint-40b-free`, `opencode/beam-free` e `opencode-go/beam-free`. Quanto cada um permite por dia, confira no painel do OpenCode.

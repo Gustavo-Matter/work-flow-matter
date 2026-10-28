@@ -31,13 +31,15 @@ Da etapa 1 à 4, o **Opus orquestra** (skill `orquestrar`): escolhe o executor d
 | 6 | **CLAUDE.md do repo é índice** de até ~2 KB e muda no mesmo PR que muda o que ele afirma (stack, deploy, banco, fase do produto) | `pronto`, `iniciar-repo` |
 | 7 | **Regra de stack em skill**, não no CLAUDE.md global | [ADR-0005](adr/0005-regra-de-stack-em-skill.md) |
 | 8 | **Processo vive neste repo** e chega pelo plugin; nada de diretrizes copiadas em cada projeto | [ADR-0001](adr/0001-plugin-distribui-o-workflow.md) |
-| 9 | **Tela com Figma** só começa com o link e o node na sub-issue, lida pela skill do Figma | `feature-front` |
+| 9 | **Tela com Figma** só começa com o link e o node na sub-issue; o Opus lê o frame e põe a spec (tokens, medidas, textos) no brief | `feature-front`, `orquestrar`, [ADR-0013](adr/0013-tela-conferida-contra-o-figma-e-com-micro-animacoes.md) |
 | 10 | **Higiene:** worktree em `$MATTER_HOME/.worktrees/`; branch padrão = branch ativa; branches mergeadas apagadas; segredo fora do git; `settings.local.json` com padrões; uma memória só; MCP ligado só quando o trabalho do dia precisa | `iniciar-repo`, `diagnosticar-workflow` |
 | 11 | **Ferramenta de terceiros** só entra com problema medido, hooks lidos e custo de contexto baixo; a lista aprovada está em [ferramentas.md](ferramentas.md) | [ADR-0008](adr/0008-criterio-para-ferramentas-de-terceiros.md) |
 | 12 | **Opus orquestra e revisa; executa o modelo mais barato que dá conta** (gratuito → Haiku → Sonnet → Opus), sempre com brief completo. Linear e docs: Haiku ou gratuito | [ADR-0010](adr/0010-opus-orquestra-modelos-gratuitos-executam.md), [modelos.md](modelos.md), skill `orquestrar` |
 | 13 | **Comentário no código: no máximo 1 a 2 linhas**, só com o porquê | `padroes-codigo`, `revisor` |
 | 14 | **Flutter: o que é comum vai pelo kit.** Componente, token e serviço compartilhado mudam no `matter-mobile-kit`, consumido por tag; feature nova nasce do brick `matterads_feature` | [ADR-0011](adr/0011-kit-e-template-flutter-no-workflow.md), skill `kit-flutter` |
 | 15 | **Teste com mock (`mocktail`)**, não com fake escrito à mão | [ADR-0012](adr/0012-testes-flutter-com-mocktail.md), `feature-front` |
+| 16 | **Tela é conferida por imagem** (screenshot do simulador × frame do Figma) antes do commit e **entra com micro-animações** | [ADR-0013](adr/0013-tela-conferida-contra-o-figma-e-com-micro-animacoes.md), `pronto`, `feature-front` |
+| 17 | **Entrega que não cumpriu o próprio critério é reaberta** no Linear, com seção datada; trabalho novo é tarefa nova | [ADR-0013](adr/0013-tela-conferida-contra-o-figma-e-com-micro-animacoes.md), `linear-tarefa` |
 
 ### Onde vive cada informação
 

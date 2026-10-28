@@ -45,7 +45,14 @@ Sem brief, não se delega. O executor não viu esta conversa.
 <lista dos arquivos alterados e uma linha por mudança>
 ```
 
-Brief longo é sinal de tarefa grande: quebre antes.
+**Brief de tela** (ADR-0013): antes de delegar, leia o frame com `figma:figma-design-to-code` e acrescente ao brief:
+- `## Spec do Figma`: tabela peça → cor (token), tamanho, espaçamento, raio, sombra, tipografia, alinhamento; os textos exatos; os node-ids;
+- as micro-animações esperadas;
+- `Pronto quando` com "screenshot do simulador igual ao frame".
+
+O executor gratuito não lê o Figma: tudo o que ele precisa está na tabela.
+
+Brief longo é sinal de tarefa grande: quebre antes. Tela com mais de ~6 blocos, ou mais de uma página, vira uma sub-issue por parte, com executores em paralelo (worktrees separados, arquivos que não se cruzam).
 
 ## 3. Dispare
 
@@ -80,7 +87,7 @@ Rode em segundo plano quando passar de ~2 minutos. Limite: 50 requisições/dia 
 ## 4. Revise (sempre no Opus)
 
 1. `git diff` do worktree: só os arquivos do brief mudaram?
-2. Gate do repo (skill `pronto`).
+2. Gate do repo (skill `pronto`). Tela: compare o screenshot do simulador com o do frame antes de seguir.
 3. Agente `revisor` no diff.
 4. Passou: commit (skill `pronto`). Não passou: devolva ao mesmo executor com o erro exato **uma vez**; falhou de novo, suba um degrau com o brief corrigido.
 
