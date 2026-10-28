@@ -25,6 +25,7 @@
 | [0010](adr/0010-opus-orquestra-modelos-gratuitos-executam.md) | Opus orquestra e revisa; modelos gratuitos e Haiku executam |
 | [0011](adr/0011-kit-e-template-flutter-no-workflow.md) | O kit e o template Flutter fazem parte do workflow, e o kit é consumido por tag |
 | [0012](adr/0012-testes-flutter-com-mocktail.md) | Testes Flutter com mock (`mocktail`), não com fake escrito à mão |
+| [0013](adr/0013-tela-conferida-contra-o-figma-e-com-micro-animacoes.md) | Tela é conferida contra o Figma por screenshot e entra com micro-animações |
 
 ## Diagnósticos
 

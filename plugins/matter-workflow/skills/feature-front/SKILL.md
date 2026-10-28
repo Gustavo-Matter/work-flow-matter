@@ -28,7 +28,7 @@ Recursos que só um dos apps tem entram no checklist como condicionais (abaixo).
 1. Leia o CLAUDE.md do repo e `docs/features/<feature>.md`. Só esses e as decisões que eles citam.
 2. **Feature nova no template ou no muma:** gere o esqueleto com `mason make matterads_feature` (brick do `matter-mobile-kit`) em vez de escrever as camadas à mão. Depois registre a rota e rode o gate.
 3. **Integração com API:** leia o contrato no repo do back (`docs/api/<modulo>.md`). Rota ou campo que não existe: pare e use a skill `contrato-api`; não invente campo.
-4. **Tela com Figma:** o link com node tem que estar na sub-issue; sem ele, peça antes de codar. Leia o frame pela skill `figma:figma-design-to-code` (não pelo print).
+4. **Tela com Figma:** o link com node tem que estar na sub-issue; sem ele, peça antes de codar. Leia o frame pela skill `figma:figma-design-to-code` (não pelo print). Executor: a spec vem na tabela do brief (ADR-0013); divergiu do frame, pare e pergunte em vez de completar com o padrão do kit.
 5. **Faltou componente no kit:** não crie botão, campo ou card no app. Use a skill `kit-flutter`.
 
 ## Regras
@@ -55,7 +55,8 @@ Teste usa **mock com `mocktail`** (ADR-0012 do work-flow-matter). Não escreva f
 Montado com os defeitos que mais voltaram como `fix` nos dois apps.
 
 **Sempre:**
-- [ ] **Fidelidade ao Figma**, conferida contra o frame antes do commit: cor e preenchimento dos CTAs, posição dos controles, CTA fixo ou rolando com o conteúdo, alinhamento (topo × centro), espaçamentos, variante do componente do kit (`soft`, `overlay`…).
+- [ ] **Fidelidade ao Figma, por imagem:** screenshot da tela no simulador lado a lado com o `get_screenshot` do frame, conferido contra a tabela da spec: cor de texto (título × legenda), cor e preenchimento dos CTAs, posição e alinhamento (esquerda × centro, valor junto do chevron), espaçamentos, raio e sombra, CTA fixo ou rolando, variante do componente do kit, nenhum bloco a mais ou a menos que o frame.
+- [ ] **Micro-animações:** entrada escalonada das seções, feedback de toque (escala ou highlight), transição de estado e de valor (`AnimatedSwitcher`, `AnimatedSize`), Hero onde a mesma imagem continua na tela seguinte; tudo desligado com reduce motion. No muma: `MumaEntrance` e decisão 028.
 - [ ] **Quatro estados** da tela, inclusive erro de rede e lista vazia; 404/403 tratados.
 - [ ] **Concorrência e ciclo de vida:** toque duplo, ação idempotente, retry que falha de novo, voltar no meio do envio; ação em várias etapas termina com a tela fechada ou bloqueia a saída; nada de `emit` depois de `close` nem `context` depois de `!mounted`.
 - [ ] **Paginação:** fim em página vazia, falha na página seguinte sem loop, não recarrega ao voltar.

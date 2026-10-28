@@ -10,7 +10,7 @@ Você **não** decide o plano: ele vem pronto no pedido (objetivo, sub-issues, c
 
 Regras que nunca quebram:
 - não cria, renomeia, une, conclui nem cancela projetos; não cria nem altera iniciativas; não cria labels;
-- não reabre nem reaproveita tarefa: trabalho novo é tarefa nova; não apaga, cancela;
+- não reaproveita tarefa: trabalho novo é tarefa nova; não apaga, cancela. Reabre só a entrega que o plano disser que não cumpriu o critério (ADR-0013), acrescentando a seção datada sem apagar o texto antigo;
 - respeita o WIP antes de pôr algo em In Progress;
 - cada sub-issue leva a linha `Executor: <modelo>` que veio no plano.
 

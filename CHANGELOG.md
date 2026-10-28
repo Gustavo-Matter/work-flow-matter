@@ -4,6 +4,11 @@
 
 - Os modelos gratuitos do próprio OpenCode entram na escada, com limite à parte do da OpenRouter: esgotou a OpenRouter, tente o OpenCode antes do Haiku. Ainda não validados (execução pendurada em 22/10/2026); `docs/modelos.md` traz o teste de fumaça com limite de tempo.
 
+## 0.7.0 — 28/10/2026
+
+- Tela conferida contra o Figma por imagem e com micro-animações (ADR-0013, regras 16 e 17): `orquestrar` exige a spec do frame no brief e quebra tela grande em sub-issues paralelas; `pronto` ganha o passo de screenshot do simulador × frame; `feature-front` troca o item de fidelidade pela comparação por imagem e ganha o item de micro-animações; `revisor` cobra os dois.
+- `linear-tarefa` e `linear-haiku`: entrega que não cumpriu o próprio critério é reaberta com seção datada; trabalho novo segue sendo tarefa nova.
+
 ## 0.6.0 — 16/10/2026
 
 - Flutter mapeado por inteiro ([diagnóstico de 16/10](docs/diagnosticos/2026-10-16-flutter-e-mac.md)): kit, template e os dois apps.

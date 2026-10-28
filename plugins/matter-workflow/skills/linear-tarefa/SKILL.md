@@ -69,7 +69,7 @@ Por que a tarefa existe e o que ela entrega.
     A central só fecha quando todas as sub-issues estiverem concluídas ou canceladas.
 12. Nunca:
     - apagar tarefa (cancele);
-    - reaproveitar tarefa para outro assunto ou reabrir tarefa concluída (crie uma nova);
+    - reaproveitar tarefa para outro assunto ou reabrir tarefa concluída **para trabalho novo** (crie uma nova). Entrega que não cumpriu o próprio critério (ex.: tela divergente do Figma) é reaberta: volta para Todo com a seção "Ajuste (<data>)" acrescentada à descrição, sem apagar o texto antigo (ADR-0013);
     - criar, renomear, unir, concluir ou cancelar projetos, nem criar ou alterar iniciativas (só o Murilo);
     - usar a label `Canary` à mão;
     - mexer em tarefa de outra pessoa sem pedido explícito;
