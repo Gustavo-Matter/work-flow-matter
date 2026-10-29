@@ -2,6 +2,7 @@
 
 ## Não lançado
 
+- Provedor NVIDIA (`nvidia/minimaxai/minimax-m3.1-flash`, 40 req/min) passa a ser a primeira escolha do gratuito; OpenRouter vira alternativa. `orquestrar` e `modelos.md` ganham o comando novo, a declaração do modelo no `opencode.jsonc` e o `< /dev/null`: sem ele o `opencode run` pendura (causa provável da execução pendurada de 22/10). Testado só no Mac, com um bug de uma linha.
 - Os modelos gratuitos do próprio OpenCode entram na escada, com limite à parte do da OpenRouter: esgotou a OpenRouter, tente o OpenCode antes do Haiku. Ainda não validados (execução pendurada em 22/10/2026); `docs/modelos.md` traz o teste de fumaça com limite de tempo.
 
 ## 0.7.0 — 28/10/2026

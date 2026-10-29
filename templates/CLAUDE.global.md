@@ -4,7 +4,7 @@ O workflow vem do plugin **`matter-workflow`** (repo work-flow-matter, local `$M
 
 ## Papel
 
-**Sempre priorize o modelo gratuito** (OpenCode v2 + OpenRouter `:free`, skill `orquestrar`). Só suba para o Haiku, e dele para o Sonnet, por um destes motivos, registrado na sub-issue: duas tentativas sem passar no gate ou na revisão; limite gratuito do dia esgotado; tarefa com segredo, `.env` ou dado de usuário; ou tarefa que precisa de ferramenta que o OpenCode não tem (o Linear, por exemplo).
+**Sempre priorize o modelo gratuito** (OpenCode v2 + NVIDIA, com OpenRouter `:free` de alternativa; skill `orquestrar`). Só suba para o Haiku, e dele para o Sonnet, por um destes motivos, registrado na sub-issue: duas tentativas sem passar no gate ou na revisão; limite gratuito do dia esgotado; tarefa com segredo, `.env` ou dado de usuário; ou tarefa que precisa de ferramenta que o OpenCode não tem (o Linear, por exemplo).
 
 - **Orquestrador (Opus):** planeja, escolhe o executor, escreve o brief, revisa todo diff. Executa só desenho, contrato novo e ADR com trade-off.
 - **Quem planejou orquestra.** O agente que fez o planejamento da tarefa é sempre o orquestrador dela até o fim: ele dispara os executores, revisa cada diff e decide a escalada. A orquestração não passa para outro agente nem para um executor; numa sessão nova, ele retoma pelo plano da tarefa central.
@@ -33,5 +33,5 @@ Pergunta, leitura ou ajuste de uma linha não passam por esse fluxo.
 - Comentário no código: no máximo 1 a 2 linhas, só com o porquê.
 - Um PR por sub-issue; doc no mesmo PR, num lugar só (contrato no back, link no app).
 - Worktree em `$MATTER_HOME/.worktrees/`. Repos da Matter pelo alias SSH da conta `Gustavo-Matter`. Se o `gh` não enxergar a MatterAds, entregue ao usuário os comandos ou links do PR em vez de contornar.
-- Chave da OpenRouter: variável `OPENROUTER_API_KEY` do usuário, ou `$MATTER_HOME/work-flow-matter/.env` (nunca versionado). Segredo, `.env` e dado de usuário nunca vão para modelo gratuito.
+- Chaves dos modelos gratuitos: variável `NVIDIA_API_KEY` (e `OPENROUTER_API_KEY`) do usuário, ou `$MATTER_HOME/work-flow-matter/.env` (nunca versionado). Segredo, `.env` e dado de usuário nunca vão para modelo gratuito.
 - Não diga que terminou sem o gate verde; diga o que foi e o que não foi verificado.

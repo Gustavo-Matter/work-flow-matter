@@ -69,7 +69,7 @@ Depois de instalar, apague as cópias antigas que o plugin substitui (`~/.claude
 cp .env.example .env
 ```
 
-Preencha `OPENROUTER_API_KEY` no `.env`, ou exporte a variável no shell (`~/.zshrc`). Modelos gratuitos via OpenCode **v2** (`npm i -g @opencode/cli`), ver [docs/modelos.md](docs/modelos.md). O `.env` não é versionado.
+Preencha `NVIDIA_API_KEY` (e `OPENROUTER_API_KEY`) no `.env`, ou exporte a variável no shell (`~/.zshrc`). Modelos gratuitos via OpenCode **v2** (`npm i -g @opencode/cli`), ver [docs/modelos.md](docs/modelos.md). O `.env` não é versionado.
 
 ## Como alterar
 
