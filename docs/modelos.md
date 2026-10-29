@@ -21,7 +21,40 @@ Quem faz o quê. Regra e porquê no [ADR-0010](adr/0010-opus-orquestra-modelos-g
 
 Escala: duas tentativas que não passam no gate ou na revisão sobem um degrau. Nunca suba direto para o Opus sem tentar o degrau abaixo, a não ser que a tarefa seja de desenho.
 
-## Modelos gratuitos (OpenRouter, via OpenCode v2)
+## Gratuito: NVIDIA (primeira escolha)
+
+Provedor `nvidia` do OpenCode v2, chave `NVIDIA_API_KEY` (build.nvidia.com), **40 requisições por minuto**; teto diário não confirmado.
+
+| Modelo | Contexto | Uso | Testado |
+|---|---|---|---|
+| `nvidia/minimaxai/minimax-m3.1-flash` | 1M | Código: primeira escolha | ✓ Mac (v2.0.31, 28/10/2026): bug de uma linha em 11 s e 39 s |
+| `deepseek-ai/deepseek-v4.1-flash`, `z-ai/glm-5.3-flash`, `poolside/laguna-xs-2.1` | 1M, 1M, 262k | Candidatos | Sem resposta em 60 s na API (28/10/2026): repetir antes de usar |
+| `moonshotai/kimi-k2.6`, `nvidia/nemotron-3-super-120b-a12b` | — | — | 404 para a conta |
+
+Dois requisitos, ou o `run` falha:
+
+- Declarar o modelo em `~/.config/opencode/opencode.jsonc`; sem isso o segundo passo do agente volta "Invalid request":
+
+```jsonc
+{
+  "provider": {
+    "nvidia": {
+      "models": {
+        "minimaxai/minimax-m3.1-flash": {
+          "name": "MiniMax M3.1 Flash",
+          "tool_call": true,
+          "reasoning": true,
+          "limit": { "context": 1000000, "output": 32000 }
+        }
+      }
+    }
+  }
+}
+```
+
+- Rodar com `< /dev/null`: com o `stdin` herdado o `opencode run` fica pendurado.
+
+## Gratuito: OpenRouter (alternativa)
 
 Exige o OpenCode **v2** (`npm i -g @opencode/cli`, ou `brew install anomalyco/tap/opencode-v2`). O pacote `opencode-ai` é a 1.x, sem `--standalone`.
 
@@ -43,19 +76,21 @@ A lista muda. Antes de fixar um modelo novo, rode o teste de fumaça da skill `o
 
 O OpenCode instalado traz provedores próprios com modelos gratuitos, e o limite deles não é o da OpenRouter. `opencode models` lista; em 22/10/2026: `opencode/big-pickle`, `opencode/deepseek-v4.1-flash-free`, `opencode/glm-5.3-flash-free`, `opencode/mimo-v2.6-flash-free`, `opencode/minimax-m3.1-flash-free`, `opencode/nemotron-3-ultra-free`, `opencode/flint-40b-free`, `opencode/beam-free` e `opencode-go/beam-free`. Quanto cada um permite por dia, confira no painel do OpenCode.
 
-**Ainda não validado.** Em 22/10/2026 (Mac, v2.0.31), `opencode run --standalone --auto` com `opencode/big-pickle`, `opencode/deepseek-v4.1-flash-free` e `opencode-go/beam-free`, disparado pelo shell do agente, ficou 120 s sem resposta e sem erro no log (o servidor sobe e a execução não avança). Antes de contar com eles, rode o teste de fumaça com limite de tempo e registre aqui o resultado, a contagem de requisições e se pede login interativo (`opencode auth login`):
+**Ainda não validado.** A causa provável do pendurar abaixo é o `stdin` herdado: em 28/10/2026 o mesmo travamento com o provedor NVIDIA sumiu ao rodar com `< /dev/null` (70 s pendurado contra 11 s). Os modelos `opencode/*` não foram retestados assim. Em 22/10/2026 (Mac, v2.0.31), `opencode run --standalone --auto` com `opencode/big-pickle`, `opencode/deepseek-v4.1-flash-free` e `opencode-go/beam-free`, disparado pelo shell do agente, ficou 120 s sem resposta e sem erro no log (o servidor sobe e a execução não avança). Antes de contar com eles, rode o teste de fumaça com limite de tempo e registre aqui o resultado, a contagem de requisições e se pede login interativo (`opencode auth login`):
 
 ```bash
-perl -e 'alarm 120; exec @ARGV' opencode run --standalone --auto --model 'opencode/<modelo>' 'Corrija o bug de soma.py.'
+perl -e 'alarm 120; exec @ARGV' opencode run --standalone --auto --model 'opencode/<modelo>' 'Corrija o bug de soma.py.' < /dev/null
 ```
 
 O macOS não tem `timeout`; o `perl` faz o papel dele.
 
 ## Chave
 
-Variável `OPENROUTER_API_KEY` do usuário (Mac: `~/.zshrc`) ou `.env` na raiz deste repo (copie o `.env.example`). A skill `orquestrar` usa a variável e, sem ela, o `.env`. O `.env` é ignorado pelo git. A chave guardada por `opencode auth login` não funcionou com `opencode run` na v2.0.31.
+Variáveis `NVIDIA_API_KEY` e `OPENROUTER_API_KEY` do usuário (Mac: `~/.zshrc`) ou `.env` na raiz deste repo (copie o `.env.example`). A skill `orquestrar` usa a variável e, sem ela, o `.env`. O `.env` é ignorado pelo git. A chave guardada por `opencode auth login` não funcionou com `opencode run` na v2.0.31.
 
 ## Limites
+
+OpenRouter `:free` (a NVIDIA está na seção dela, acima):
 
 | | Sem créditos (hoje) | Com US$ 10 em créditos |
 |---|---|---|
@@ -64,7 +99,7 @@ Variável `OPENROUTER_API_KEY` do usuário (Mac: `~/.zshrc`) ou `.env` na raiz d
 
 - Cada passo do agente é uma requisição: uma edição trivial gastou 6. Requisição que falha também conta.
 - Com 50/dia cabem poucas tarefas pequenas. Se o gratuito virar o executor principal, os US$ 10 se pagam.
-- Acabou o limite da OpenRouter: tente os modelos gratuitos do próprio OpenCode (seção abaixo) antes de subir. Esgotados os dois, o próximo degrau é o Haiku, não o Opus.
+- Acabou o limite da NVIDIA ou da OpenRouter: tente o outro provedor e os modelos gratuitos do próprio OpenCode (seção abaixo) antes de subir. Esgotados todos, o próximo degrau é o Haiku, não o Opus.
 
 ## Privacidade
 
