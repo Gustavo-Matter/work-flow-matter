@@ -2,6 +2,7 @@
 
 ## Não lançado
 
+- Skill nova `design-app` (etapa 1b do ciclo, regra 19, ADR-0015): quatro lentes de produto (onboarding curto × longo, estados e recuperação, valor acumulado, relógio real) com guardrails de anúncio e urgência falsa; `feature-front` exige o checklist dela em tela nova.
 - Plugin novo `matter-loja` 0.1.0: skill e `/app-store-audit` do app-store-compliance v2.4.0, copiados por `sync-upstream.sh`, sem hook (ADR-0014).
 - `feature-front`, `pronto` e `revisor` cobram a auditoria de loja (`/matter-loja:app-store-audit`) quando o PR de app mexe no que o item Loja da `feature-front` lista (plist, manifesto de privacidade, permissão, entitlement, IAP, exclusão de conta, versão); `iniciar-repo` habilita o `matter-loja` e copia o `store-compliance.yml` em app novo; regra 18 (ADR-0014).
 - Provedor NVIDIA (`nvidia/minimaxai/minimax-m3.1-flash`, 40 req/min) passa a ser a primeira escolha do gratuito; OpenRouter vira alternativa. `orquestrar` e `modelos.md` ganham o comando novo, a declaração do modelo no `opencode.jsonc` e o `< /dev/null`: sem ele o `opencode run` pendura (causa provável da execução pendurada de 22/10). Testado só no Mac, com um bug de uma linha.
