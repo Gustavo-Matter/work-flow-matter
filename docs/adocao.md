@@ -1,15 +1,15 @@
 # Adoção do workflow por repositório
 
-Atualizada pela skill `iniciar-repo` ou `diagnosticar-workflow` a cada mudança. `✓` feito · `—` falta · `~` em andamento.
+Atualizada pela skill `iniciar-repo` ou `diagnosticar-workflow` a cada mudança. `✓` feito · `—` falta · `~` em andamento · `n/a` não se aplica.
 
-| Repo | Plugin instalado | CLAUDE.md índice e atual | Template de PR | CI | Contrato fora de handoff | Processo fora do repo | Branches limpas |
-|---|---|---|---|---|---|---|---|
-| muma-fit-api | — | ✓ | — | — (só deploy, sem teste) | — (`docs/flutter/handoff-*`) | — (`docs/diretrizes-linear`) | — |
-| bencaodiaria-app-api | — | — (desatualizado na `main`) | — | ✓ | ✓ | — (`docs/linear.md` na branch) | — |
-| muma-fit (app) | — | ~ | ✓ | ~ | — (`docs/back/`) | — (`docs/mat-1508-diretrizes-linear`) | — |
-| bencaodiaria-app-mobile | — | ~ | ~ | ~ (push só em `master`) | ✓ | ~ (`docs/linear.md`) | — (`master` como padrão) |
-| matter-mobile-kit | — | ✓ | — | — (pausado desde 02/09) | — | ✓ | — (18 branches, várias mergeadas) |
-| matter-flutter-template | — | ✓ | ✓ | — (pausado: falta GitHub App) | — | ✓ | ~ |
+| Repo | Plugin instalado | CLAUDE.md índice e atual | Template de PR | CI | Contrato fora de handoff | Processo fora do repo | Branches limpas | Loja (ADR-0014) |
+|---|---|---|---|---|---|---|---|---|
+| muma-fit-api | — | ✓ | — | — (só deploy, sem teste) | — (`docs/flutter/handoff-*`) | — (`docs/diretrizes-linear`) | — | n/a |
+| bencaodiaria-app-api | — | — (desatualizado na `main`) | — | ✓ | ✓ | — (`docs/linear.md` na branch) | — | n/a |
+| muma-fit (app) | — | ~ | ✓ | ~ | — (`docs/back/`) | — (`docs/mat-1508-diretrizes-linear`) | — | — (MAT-2072) |
+| bencaodiaria-app-mobile | — | ~ | ~ | ~ (push só em `master`) | ✓ | ~ (`docs/linear.md`) | — (`master` como padrão) | — (MAT-2071) |
+| matter-mobile-kit | — | ✓ | — | — (pausado desde 02/09) | — | ✓ | — (18 branches, várias mergeadas) | n/a |
+| matter-flutter-template | — | ✓ | ✓ | — (pausado: falta GitHub App) | — | ✓ | ~ | — (MAT-2070) |
 
 `~` nos apps: em andamento nas sessões de 15/10/2026 que aplicam as melhorias.
 

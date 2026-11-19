@@ -40,6 +40,7 @@ Da etapa 1 à 4, o **Opus orquestra** (skill `orquestrar`): escolhe o executor d
 | 15 | **Teste com mock (`mocktail`)**, não com fake escrito à mão | [ADR-0012](adr/0012-testes-flutter-com-mocktail.md), `feature-front` |
 | 16 | **Tela é conferida por imagem** (screenshot do simulador × frame do Figma) antes do commit e **entra com micro-animações** | [ADR-0013](adr/0013-tela-conferida-contra-o-figma-e-com-micro-animacoes.md), `pronto`, `feature-front` |
 | 17 | **Entrega que não cumpriu o próprio critério é reaberta** no Linear, com seção datada; trabalho novo é tarefa nova | [ADR-0013](adr/0013-tela-conferida-contra-o-figma-e-com-micro-animacoes.md), `linear-tarefa` |
+| 18 | **App vai para a loja auditado:** PR que mexe no que a loja revisa roda `/matter-loja:app-store-audit`, e o CI `store-compliance.yml` barra crítico | [ADR-0014](adr/0014-auditoria-de-loja-por-plugin-sem-hook.md), `pronto`, `feature-front` |
 
 ### Onde vive cada informação
 
