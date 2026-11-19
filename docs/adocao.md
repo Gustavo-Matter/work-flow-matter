@@ -6,10 +6,10 @@ Atualizada pela skill `iniciar-repo` ou `diagnosticar-workflow` a cada mudança.
 |---|---|---|---|---|---|---|---|---|
 | muma-fit-api | — | ✓ | — | — (só deploy, sem teste) | — (`docs/flutter/handoff-*`) | — (`docs/diretrizes-linear`) | — | n/a |
 | bencaodiaria-app-api | — | — (desatualizado na `main`) | — | ✓ | ✓ | — (`docs/linear.md` na branch) | — | n/a |
-| muma-fit (app) | — | ~ | ✓ | ~ | — (`docs/back/`) | — (`docs/mat-1508-diretrizes-linear`) | — | — (MAT-2072) |
-| bencaodiaria-app-mobile | — | ~ | ~ | ~ (push só em `master`) | ✓ | ~ (`docs/linear.md`) | — (`master` como padrão) | — (MAT-2071) |
+| muma-fit (app) | — | ~ | ✓ | ~ | — (`docs/back/`) | — (`docs/mat-1508-diretrizes-linear`) | — | ~ (job vermelho por falso positivo, MAT-2086) |
+| bencaodiaria-app-mobile | — | ~ | ~ | ~ (push só em `master`) | ✓ | ~ (`docs/linear.md`) | — (`master` como padrão) | ✓ |
 | matter-mobile-kit | — | ✓ | — | — (pausado desde 02/09) | — | ✓ | — (18 branches, várias mergeadas) | n/a |
-| matter-flutter-template | — | ✓ | ✓ | — (pausado: falta GitHub App) | — | ✓ | ~ | — (MAT-2070) |
+| matter-flutter-template | — | ✓ | ✓ | — (pausado: falta GitHub App) | — | ✓ | ~ | ~ (job vermelho até a MAT-2082; brick no kit #45) |
 
 `~` nos apps: em andamento nas sessões de 15/10/2026 que aplicam as melhorias.
 
