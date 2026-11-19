@@ -72,6 +72,7 @@ Montado com os defeitos que mais voltaram como `fix` nos dois apps.
 - [ ] **Push** (bencao): listener não duplica; deep link abre a tela certa.
 - [ ] **Anúncios:** template/muma só pelo `AdsService` do `matter_core`; bencao: ATT não concorre com o alerta de push.
 - [ ] **Plataforma:** `PrivacyInfo.xcprivacy`, `CFBundleLocalizations`, `targetSdk`, permissões no `Info.plist`/`AndroidManifest`.
+- [ ] **Loja:** mexeu em `Info.plist`, `PrivacyInfo.xcprivacy`, `AndroidManifest`, permissão, entitlement, IAP/assinatura, exclusão de conta ou versão de release? O orquestrador roda `/matter-loja:app-store-audit` no `pronto`, resolve todo crítico antes do PR e põe o veredito no corpo do PR (ADR-0014).
 
 Item que não se aplica: diga por quê em uma linha.
 
