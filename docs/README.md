@@ -27,6 +27,7 @@
 | [0012](adr/0012-testes-flutter-com-mocktail.md) | Testes Flutter com mock (`mocktail`), não com fake escrito à mão |
 | [0013](adr/0013-tela-conferida-contra-o-figma-e-com-micro-animacoes.md) | Tela é conferida contra o Figma por screenshot e entra com micro-animações |
 | [0014](adr/0014-auditoria-de-loja-por-plugin-sem-hook.md) | Auditoria de loja por um plugin nosso com código de terceiros fixado e sem hook |
+| [0015](adr/0015-design-de-produto-antes-da-tela.md) | Design de produto passa pela skill design-app antes do Figma e do código |
 
 ## Diagnósticos
 

@@ -7,6 +7,7 @@ O jeito de trabalhar com o Claude Code nos projetos da Matter, para back (.NET) 
 ```
 0. repo       /matter-workflow:iniciar-repo        repo novo, ou alinhar um existente
 1. planejar   /matter-workflow:planejar-feature    tarefa central + sub-issues; plano na descrição da central
+1b. design    /matter-workflow:design-app          app, fluxo ou tela nova: lentes de produto e estados, antes do Figma
 2. contrato   /matter-workflow:contrato-api        só quando back e front mudam juntos
 3. codar      /matter-workflow:feature-back        ou   feature-front   (princípios comuns: padroes-codigo)
    kit        /matter-workflow:kit-flutter         mudança no matter-mobile-kit ou no matter-flutter-template
@@ -41,6 +42,7 @@ Da etapa 1 à 4, o **Opus orquestra** (skill `orquestrar`): escolhe o executor d
 | 16 | **Tela é conferida por imagem** (screenshot do simulador × frame do Figma) antes do commit e **entra com micro-animações** | [ADR-0013](adr/0013-tela-conferida-contra-o-figma-e-com-micro-animacoes.md), `pronto`, `feature-front` |
 | 17 | **Entrega que não cumpriu o próprio critério é reaberta** no Linear, com seção datada; trabalho novo é tarefa nova | [ADR-0013](adr/0013-tela-conferida-contra-o-figma-e-com-micro-animacoes.md), `linear-tarefa` |
 | 18 | **App vai para a loja auditado:** PR que mexe no que a loja revisa roda `/matter-loja:app-store-audit`, e o CI `store-compliance.yml` barra crítico | [ADR-0014](adr/0014-auditoria-de-loja-por-plugin-sem-hook.md), `pronto`, `feature-front` |
+| 19 | **Tela nova passa pela design-app antes do Figma:** onboarding, estados, recuperação, valor acumulado e relógio decididos e registrados no doc da feature | [ADR-0015](adr/0015-design-de-produto-antes-da-tela.md), `design-app`, `feature-front` |
 
 ### Onde vive cada informação
 

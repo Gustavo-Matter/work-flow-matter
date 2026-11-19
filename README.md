@@ -32,6 +32,7 @@ Cada repo habilita o que usa no próprio `.claude/settings.json` ([modelo](templ
 | `planejar-feature` | Antes de trabalho com mais de um PR: sub-issues pequenas, plano na tarefa central |
 | `contrato-api` | Back e front mudam juntos, ou o app precisa de algo que a API não tem |
 | `feature-back` | Rota, regra ou persistência numa API .NET |
+| `design-app` | App, fluxo ou tela nova: onboarding, estados, recuperação, valor acumulado e relógio, antes do Figma |
 | `feature-front` | Tela, estado ou integração num app Flutter (perfil por app, checklist, testes com `mocktail`) |
 | `kit-flutter` | Mudança no `matter-mobile-kit` ou no `matter-flutter-template`: componente, token, release, bricks |
 | `padroes-codigo` | Código em Python, Node ou Go; princípios comuns (estrutura, fluxo, envelope, logs) |

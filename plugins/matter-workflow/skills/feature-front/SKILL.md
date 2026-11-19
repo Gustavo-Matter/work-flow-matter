@@ -30,6 +30,7 @@ Recursos que só um dos apps tem entram no checklist como condicionais (abaixo).
 3. **Integração com API:** leia o contrato no repo do back (`docs/api/<modulo>.md`). Rota ou campo que não existe: pare e use a skill `contrato-api`; não invente campo.
 4. **Tela com Figma:** o link com node tem que estar na sub-issue; sem ele, peça antes de codar. Leia o frame pela skill `figma:figma-design-to-code` (não pelo print). Executor: a spec vem na tabela do brief (ADR-0013); divergiu do frame, pare e pergunte em vez de completar com o padrão do kit.
 5. **Faltou componente no kit:** não crie botão, campo ou card no app. Use a skill `kit-flutter`.
+6. **Tela nova:** o `docs/features/<feature>.md` precisa ter o checklist da skill `design-app`. Sem ele, pare e peça.
 
 ## Regras
 
