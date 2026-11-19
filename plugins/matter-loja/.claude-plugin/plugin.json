@@ -1,0 +1,9 @@
+{
+    "name": "matter-loja",
+    "version": "0.1.0",
+    "description": "Auditoria de loja (Apple App Store e Google Play) antes do envio: skill e /app-store-audit do app-store-compliance v2.4.0, sem hook. Habilitar só em apps.",
+    "author": {
+        "name": "Gustavo",
+        "email": "gustavo@matterads.com"
+    }
+}

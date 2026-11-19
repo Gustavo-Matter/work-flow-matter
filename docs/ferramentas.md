@@ -4,20 +4,21 @@ Plugins, skills e MCPs aprovados para o desenvolvimento de back e front. Critér
 
 ## Como as ferramentas chegam aos projetos
 
-[ADR-0009](adr/0009-ferramentas-de-stack-em-plugins-separados.md): três plugins no marketplace `matter`, e cada repo habilita o que usa no seu `.claude/settings.json` (modelo: [templates/project-settings.json](../templates/project-settings.json)).
+[ADR-0009](adr/0009-ferramentas-de-stack-em-plugins-separados.md): quatro plugins no marketplace `matter`, e cada repo habilita o que usa no seu `.claude/settings.json` (modelo: [templates/project-settings.json](../templates/project-settings.json)). O `matter-loja` é a exceção de código de terceiros da [ADR-0014](adr/0014-auditoria-de-loja-por-plugin-sem-hook.md).
 
 | Plugin nosso | Entrega | Habilitar em |
 |---|---|---|
 | `matter-workflow` | Skills, agente `revisor`, diretrizes do Linear | Todos os repos |
 | `matter-flutter` | Dart MCP + LSP do Dart, via `fvm` | Apps Flutter, no escopo **local** (`--scope local`); no escopo user o MCP sobe em todo projeto |
 | `matter-dotnet` | LSP de C# (`csharp-ls`) | APIs .NET |
+| `matter-loja` | Skill e `/app-store-audit` de auditoria de loja (terceiros, versão fixa) | Apps Flutter |
 
 Requisitos na máquina: `fvm` com o SDK do projeto (Flutter) e `dotnet tool install -g csharp-ls` (.NET).
 
 ### Verificação depois de instalar
 
 16/10/2026, Mac: `matter-flutter` instalado no muma-fit, `claude mcp list` mostra `plugin:matter-flutter:dart ✔ Connected`. Falta conferir o LSP do Dart e o `matter-dotnet`. Confirme num app Flutter e numa API .NET:
-1. `/plugin` lista `matter-workflow`, `matter-flutter` ou `matter-dotnet` como habilitados e sem erro.
+1. `/plugin` lista `matter-workflow`, `matter-flutter`, `matter-dotnet` ou `matter-loja` como habilitados e sem erro.
 2. `/mcp` mostra o servidor `dart` conectado (só no app Flutter).
 3. Peça "onde é usado o símbolo X" e confira nas ferramentas que o LSP respondeu em vez de grep.
 4. Falhou: ajuste o `plugin.json` aqui, suba a versão e registre no CHANGELOG.
@@ -38,6 +39,7 @@ Requisitos na máquina: `fvm` com o SDK do projeto (Flutter) e `dotnet tool inst
 | **Dart and Flutter MCP server** (oficial) | Front | Analisar, testar, ver a árvore de widgets do app rodando e hot reload | Plugin `matter-flutter` (usa `fvm dart` para casar com o SDK do projeto) |
 | **LSP de C#** (`csharp-ls`) | Back | Navegação por símbolo em vez de grep | Plugin `matter-dotnet`; exige `csharp-ls` no PATH (`dotnet tool install -g csharp-ls`) |
 | **LSP de Dart** (`dart language-server`, do SDK) | Front | O mesmo, para Flutter | Plugin `matter-flutter` |
+| **app-store-compliance** (mjmirza, v2.4.0) | Front | Auditar o app contra as regras da Apple e do Google Play antes do envio | Plugin `matter-loja`; sem o hook do upstream (ADR-0014). |
 | **Very Good AI Flutter Plugin** | Front | Agente `flutter-reviewer`, loop `green-gate`, skills de Bloc e arquitetura em camadas | Catálogo do claude.ai, por pessoa. **Traz hooks (`PreToolUse`, `PostToolUse`, `SessionStart`) e dois MCPs (um deles `dart`, que duplica o do `matter-flutter`): leia antes** |
 | **Token Inspector** | Ambos | `mcp-audit`, `find-bloat`, `slim-instructions` | Catálogo do claude.ai, por pessoa. Só skills |
 | **AI Ready Design System** | Design | Auditar o design system do Figma em 28 regras | Catálogo do claude.ai, por pessoa. Só skill; uso pontual |
