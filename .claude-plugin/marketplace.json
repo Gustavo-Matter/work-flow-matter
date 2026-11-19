@@ -19,6 +19,11 @@
             "name": "matter-dotnet",
             "source": "./plugins/matter-dotnet",
             "description": "Language server de C# (csharp-ls). Habilitar só em APIs .NET."
+        },
+        {
+            "name": "matter-loja",
+            "source": "./plugins/matter-loja",
+            "description": "Auditoria de loja (Apple e Google Play) antes do envio: skill e /app-store-audit, sem hook. Habilitar só em apps."
         }
     ]
 }

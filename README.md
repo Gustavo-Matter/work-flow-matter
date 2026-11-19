@@ -21,6 +21,7 @@ O workflow da Matter com o Claude Code, para back (.NET) e front (Flutter). As c
 | `matter-workflow` | Skills e agente abaixo | Todos os repos |
 | `matter-flutter` | Dart MCP e LSP do Dart (via `fvm`) | Apps Flutter |
 | `matter-dotnet` | LSP de C# (`csharp-ls`) | APIs .NET |
+| `matter-loja` | Skill e `/app-store-audit` de auditoria de loja (terceiros, versão fixa) | Apps Flutter |
 
 Cada repo habilita o que usa no próprio `.claude/settings.json` ([modelo](templates/project-settings.json)). Plugins de terceiros recomendados: [docs/ferramentas.md](docs/ferramentas.md).
 
@@ -52,6 +53,7 @@ Num terminal `claude` interativo:
 /plugin marketplace add ~/Documents/matter/work-flow-matter   # Windows: C:\Matter\work-flow-matter
 /plugin install matter-workflow@matter
 /plugin install matter-flutter@matter --scope local   # dentro de cada app Flutter
+/plugin install matter-loja@matter --scope local   # dentro de cada app
 /plugin install matter-dotnet@matter --scope local    # dentro de cada API .NET
 ```
 
