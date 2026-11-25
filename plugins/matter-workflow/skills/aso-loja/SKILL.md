@@ -59,7 +59,7 @@ Conte os caracteres com `len()` sobre o texto exato. Anote a contagem na ficha (
 - **Capturas com legenda curta** (até 40 caracteres), com o benefício principal na **primeira**. A pessoa decide antes de ler a descrição.
 - **Tamanhos:**
   - Play: telefone 1080×1920 (a proporção máxima é 2:1, então uma captura de iPhone 6,9" sem moldura não serve), ícone 512×512 e destaque 1024×500;
-  - Apple: iPhone 6,9" 1320×2868, e iPad 13" 2064×2752 se o app declarar iPad (`TARGETED_DEVICE_FAMILY` com 2).
+  - Apple (nov/2026): o slot **obrigatório** é o iPhone de tela média, 6,1"/6,3" (1206×2622); 6,9" (1320×2868) virou opcional. Se o app declarar iPad (`TARGETED_DEVICE_FAMILY` com 2), iPad 13" 2064×2752 também é obrigatório.
 - Gere por script (`docs/loja/gerar_imagens.py`, como no Creduno) a partir das capturas brutas em `docs/loja/raw/`. Assim a troca de tela ou de legenda é um comando só.
 - **Captura limpa:**
   - status bar fixa (`xcrun simctl status_bar <udid> override --time 09:41 ...`);
@@ -78,13 +78,15 @@ Conte os caracteres com `len()` sobre o texto exato. Anote a contagem na ficha (
 - [ ] `ficha-app-store-pt-BR.md` e `ficha-google-play-pt-BR.md`, com cada campo e a contagem ("n de limite")
 - [ ] `notas-para-revisao.md` (inglês para a loja, pt-BR para o dono), dizendo se há login, conta de teste e anúncios
 - [ ] `privacidade-formularios.md` (Data Safety e App Privacy) e `classificacao-e-declaracoes.md`, com os itens a conferir marcados `CONFERIR`
-- [ ] `raw/` com as capturas brutas e as pastas geradas (`google-play-phone/`, `app-store-iphone-6.9/` e `app-store-ipad-13/`, se o app declarar iPad), mais o ícone e o destaque
+- [ ] `raw/` com as capturas brutas e as pastas geradas (`google-play-phone/`, `app-store-iphone-6.3/`, `app-store-iphone-6.9/` e `app-store-ipad-13/`, se o app declarar iPad), mais o ícone e o destaque
 - [ ] `checklist-publicacao.md`: o que falta, em ordem, dizendo quem faz cada item (dono, infra ou IA)
 
 ## Cadastro nos consoles
 
 - **Apple:** primeiro o App ID explícito em Identifiers. Depois, no App Store Connect, crie o app em Novo app (nome, idioma principal, bundle, SKU) e anote o **Apple ID numérico**.
 - **Google:** em Criar app, informe o nome, o idioma padrão, se é App ou Jogo e se é gratuito ou pago. As declarações de política e de exportação são aceite: **só marque com o "ok" do dono na hora.**
+- **App Store Connect:** desmarque "Início de sessão obrigatório" quando o app não tiver login, e envie as capturas pelo Gerenciador de mídia.
+- **Play:** o envio de várias capturas de uma vez entra fora de ordem. Tire do slot e adicione uma a uma pela biblioteca (Adicionar recursos › item › Adicionar). Salve a ficha como rascunho, porque "Avançar" leva à revisão.
 - **A IA nunca:**
   - digita senha ou código;
   - aceita contrato sem o "ok" do dono;
