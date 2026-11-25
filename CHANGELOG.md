@@ -2,6 +2,7 @@
 
 ## Não lançado
 
+- Skill nova `aso-loja`: ASO das fichas da App Store e do Google Play (termos de cauda longa, campos com limite, localização extra opcional, capturas com legenda, empurrão e paciência depois da troca) e cadastro nos consoles, com base no vídeo do App Masters (*The Proven ASO Framework for 2026*) e no exemplo do Creduno.
 - Skill nova `design-app` (etapa 1b do ciclo, regra 19, ADR-0015): quatro lentes de produto (onboarding curto × longo, estados e recuperação, valor acumulado, relógio real) com guardrails de anúncio e urgência falsa; `feature-front` exige o checklist dela em tela nova.
 - Plugin novo `matter-loja` 0.1.0: skill e `/app-store-audit` do app-store-compliance v2.4.0, copiados por `sync-upstream.sh`, sem hook (ADR-0014).
 - `feature-front`, `pronto` e `revisor` cobram a auditoria de loja (`/matter-loja:app-store-audit`) quando o PR de app mexe no que o item Loja da `feature-front` lista (plist, manifesto de privacidade, permissão, entitlement, IAP, exclusão de conta, versão); `iniciar-repo` habilita o `matter-loja` e copia o `store-compliance.yml` em app novo; regra 18 (ADR-0014).

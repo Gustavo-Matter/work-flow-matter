@@ -17,6 +17,7 @@ O workflow vem do plugin **`matter-workflow`** (repo work-flow-matter, local `$M
 | Feature ou mudança com mais de um PR | `planejar-feature` → `orquestrar` |
 | Back e front mudam juntos | `contrato-api` antes de qualquer código |
 | Tela, fluxo ou app novo a desenhar | `design-app` antes do Figma e da `feature-front` |
+| Ficha ou cadastro do app nas lojas (ASO) | `aso-loja` |
 | Código numa API .NET / app Flutter / Python, Node, Go | `feature-back` / `feature-front` / `padroes-codigo` |
 | Componente, token ou serviço comum dos apps Flutter | `kit-flutter` (no `matter-mobile-kit`, não no app) |
 | Escolha com alternativa descartada | `registrar-decisao` |
